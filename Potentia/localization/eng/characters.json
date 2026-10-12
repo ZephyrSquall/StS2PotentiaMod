@@ -1,3 +1,16 @@
 {
-  
+  "POTENTIA-POTENTIA.aromaPrinciple": "Lore",
+  "POTENTIA-POTENTIA.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "POTENTIA-POTENTIA.banter.dead.endTurnPing": "...",
+  "POTENTIA-POTENTIA.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
+  "POTENTIA-POTENTIA.cardsModifierTitle": "__ Cards",
+  "POTENTIA-POTENTIA.description": "Character Selection\nScreen Description",
+  "POTENTIA-POTENTIA.eventDeathPrevention": "Co-op survival line",
+  "POTENTIA-POTENTIA.goldMonologue": "Line spoken when obtaining a large amount of gold",
+  "POTENTIA-POTENTIA.possessiveAdjective": "his/her/its",
+  "POTENTIA-POTENTIA.pronounObject": "him/her/it",
+  "POTENTIA-POTENTIA.pronounPossessive": "his/hers/its",
+  "POTENTIA-POTENTIA.pronounSubject": "he/she/it",
+  "POTENTIA-POTENTIA.title": "The Potentia",
+  "POTENTIA-POTENTIA.titleObject": "The Potentia"
 }

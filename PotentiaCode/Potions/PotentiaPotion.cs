@@ -9,8 +9,9 @@ namespace Potentia.PotentiaCode.Potions;
 [Pool(typeof(PotentiaPotionPool))]
 public abstract class PotentiaPotion : CustomPotionModel
 {
-	public override string? CustomPackedImagePath =>
-		$"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PotionImagePath();
-	public override string? CustomPackedOutlinePath =>
-		$"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PotionOutlineImagePath();
+    public override string? CustomPackedImagePath =>
+        $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PotionImagePath();
+
+    public override string? CustomPackedOutlinePath =>
+        $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PotionOutlineImagePath();
 }

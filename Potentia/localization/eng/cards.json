@@ -1,3 +1,4 @@
 {
-  
+  "POTENTIA-SHOCK_STAB.description": "Deal {Damage:diff()} damage.\nApply {ShockPower:diff()} [gold]Shock[/gold].",
+  "POTENTIA-SHOCK_STAB.title": "Shock Stab"
 }
