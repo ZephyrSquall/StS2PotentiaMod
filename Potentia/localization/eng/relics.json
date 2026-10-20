@@ -1,5 +1,8 @@
 {
   "POTENTIA-GNARLED_BRUSH.description": "Upon pickup, [gold]Enchant[/gold] a card with [purple]Polychrome[/purple].",
   "POTENTIA-GNARLED_BRUSH.flavor": "",
-  "POTENTIA-GNARLED_BRUSH.title": "Gnarled Brush"
+  "POTENTIA-GNARLED_BRUSH.title": "Gnarled Brush",
+  "POTENTIA-STARTER_RELIC.description": "The first cost [blue]X[/blue] card you spend energy on each turn has [blue]1[/blue] additional [gold]Recharge[/gold].",
+  "POTENTIA-STARTER_RELIC.flavor": "",
+  "POTENTIA-STARTER_RELIC.title": "TEMP NAME Starter Relic"
 }

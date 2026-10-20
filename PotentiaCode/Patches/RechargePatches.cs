@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.TextEffects;
+using Potentia.PotentiaCode.Utilities;
 
 namespace Potentia.PotentiaCode.Patches;
 
@@ -43,11 +45,13 @@ internal class RechargeDescriptionPatch
 
     public static List<string> TranspilerAddedCode(CardModel cardModel, List<string> source)
     {
-        var recharge = RechargeTracker.RechargeAmount[cardModel];
+        int recharge = PotentiaQueries.GetRecharge(cardModel);
         if (recharge > 0)
         {
             LocString locString = new LocString("static_hover_tips", "POTENTIA-RECHARGE.extraText");
-            locString.Add("Recharge", recharge);
+            string rechargeText = StsTextUtilities.HighlightChangeText(recharge.ToString(),
+                recharge - RechargeTracker.RechargeAmount[cardModel]);
+            locString.Add("Recharge", rechargeText);
             source.Add(locString.GetFormattedText());
         }
 
@@ -81,7 +85,7 @@ public class RechargeHoverTipPatch
 
     public static List<IHoverTip> TranspilerAddedCode(CardModel cardModel, List<IHoverTip> list)
     {
-        var recharge = RechargeTracker.RechargeAmount[cardModel];
+        int recharge = PotentiaQueries.GetRecharge(cardModel);
         if (recharge > 0)
         {
             LocString title = new LocString("static_hover_tips", "POTENTIA-RECHARGE_DYNAMIC.title");
@@ -107,7 +111,7 @@ internal class RegainEnergyPatch
     {
         await originalTask;
 
-        int recharge = RechargeTracker.RechargeAmount[card];
+        int recharge = PotentiaQueries.GetRecharge(card);
         if (recharge > 0)
         {
             // Intentional integer division to ensure fractional amounts are rounded down, as is always supposed to be

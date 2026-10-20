@@ -5,7 +5,7 @@ using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Models.Relics;
+using Potentia.PotentiaCode.Relics;
 
 namespace Potentia.PotentiaCode.Character;
 
@@ -35,7 +35,7 @@ public class Potentia : PlaceholderCharacterModel
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<StarterRelic>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<PotentiaCardPool>();
