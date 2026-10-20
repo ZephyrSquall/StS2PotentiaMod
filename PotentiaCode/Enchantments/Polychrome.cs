@@ -10,7 +10,7 @@ public class Polychrome : CustomEnchantmentModel
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(PotentiaKeywords.Prismatic)
+        HoverTipFactory.FromKeyword(PotentiaKeywords.Prismatic), HoverTipFactory.Static(StaticHoverTip.Transform)
     ];
 
     protected override void OnEnchant()
