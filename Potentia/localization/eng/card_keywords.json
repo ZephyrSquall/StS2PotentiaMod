@@ -1,4 +1,6 @@
 {
+  "POTENTIA-AUTO.description": "At the end of your turn, if this is in your [gold]Hand[/gold], play it. If it has [gold]Retain[/gold], return it to your [gold]Hand[/gold] when played this way.",
+  "POTENTIA-AUTO.title": "Auto",
   "POTENTIA-PRISMATIC.description": "Whenever you draw this card, [gold]Transform[/gold] it and add [gold]Prismatic[/gold] to it.",
   "POTENTIA-PRISMATIC.title": "Prismatic"
 }

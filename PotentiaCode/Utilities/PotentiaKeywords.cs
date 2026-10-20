@@ -6,5 +6,8 @@ namespace Potentia.PotentiaCode.Utilities;
 public class PotentiaKeywords
 {
     [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
+    public static CardKeyword Auto;
+
+    [CustomEnum] [KeywordProperties(AutoKeywordPosition.Before)]
     public static CardKeyword Prismatic;
 }
