@@ -22,10 +22,9 @@ public class StarterRelic() : PotentiaRelic, IModifyRecharge
             e.HappenedThisTurn(Owner.Creature.CombatState) && e.CardPlay.Player == Owner &&
             e.CardPlay.Resources.EnergySpent > 0 && e.CardPlay.Card.EnergyCost.CostsX);
 
-    public int ModifyRecharge(CardModel card, int recharge)
+    public int ModifyRecharge(CardModel card, int energySpent, int recharge)
     {
-        if (card.Owner == Owner && card.EnergyCost.CostsX && Owner.PlayerCombatState.Energy > 0 &&
-            !HasSpentEnergyOnXCardThisTurn)
+        if (card.Owner == Owner && card.EnergyCost.CostsX && energySpent > 0 && !HasSpentEnergyOnXCardThisTurn)
             return recharge + 1;
         return recharge;
     }

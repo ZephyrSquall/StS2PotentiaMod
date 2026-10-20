@@ -4,5 +4,5 @@ namespace Potentia.PotentiaCode.Hooks;
 
 public interface IModifyRecharge
 {
-    int ModifyRecharge(CardModel card, int recharge);
+    int ModifyRecharge(CardModel card, int energySpent, int recharge);
 }

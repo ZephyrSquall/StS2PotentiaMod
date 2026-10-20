@@ -111,7 +111,7 @@ internal class RegainEnergyPatch
     {
         await originalTask;
 
-        int recharge = PotentiaQueries.GetRecharge(card);
+        int recharge = PotentiaQueries.GetRecharge(card, amount);
         if (recharge > 0)
         {
             // Intentional integer division to ensure fractional amounts are rounded down, as is always supposed to be
