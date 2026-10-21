@@ -1,6 +1,10 @@
 {
+  "POTENTIA-BOLT_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {ShockPower:diff()} [gold]Shock[/gold].",
+  "POTENTIA-BOLT_STRIKE.title": "Bolt Strike",
+  "POTENTIA-DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "POTENTIA-DEFEND.title": "Defend",
   "POTENTIA-MAGNITUDE_STRIKE.description": "Deal {Damage:diff()} damage X times.",
   "POTENTIA-MAGNITUDE_STRIKE.title": "Magnitude Strike",
-  "POTENTIA-SHOCK_STAB.description": "Deal {Damage:diff()} damage.\nApply {ShockPower:diff()} [gold]Shock[/gold].",
-  "POTENTIA-SHOCK_STAB.title": "Shock Stab"
+  "POTENTIA-STRIKE.description": "Deal {Damage:diff()} damage.",
+  "POTENTIA-STRIKE.title": "Strike"
 }

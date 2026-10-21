@@ -9,8 +9,10 @@ using Potentia.PotentiaCode.Powers;
 
 namespace Potentia.PotentiaCode.Cards;
 
-public class ShockStab() : PotentiaCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class BoltStrike() : PotentiaCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6, ValueProp.Move), new PowerVar<ShockPower>(2)
