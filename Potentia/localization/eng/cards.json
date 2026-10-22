@@ -1,4 +1,6 @@
 {
+  "POTENTIA-UNNAMED_BASIC_ATTACK1.description": "Enemy loses {Damage:diff()} HP X times.\nIf this costs exactly {Energy:energyIcons()}, gain {Block:diff()} [gold]Block[/gold].",
+  "POTENTIA-UNNAMED_BASIC_ATTACK1.title": "UNNAMED Basic Attack 1",
   "POTENTIA-BOLT_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {ShockPower:diff()} [gold]Shock[/gold].",
   "POTENTIA-BOLT_STRIKE.title": "Bolt Strike",
   "POTENTIA-DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
