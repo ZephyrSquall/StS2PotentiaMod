@@ -2,6 +2,7 @@ using System.Reflection;
 using BaseLib.Utils;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
@@ -48,10 +49,24 @@ internal class RechargeDescriptionPatch
         int recharge = PotentiaQueries.GetRecharge(cardModel);
         if (recharge > 0)
         {
-            LocString locString = new LocString("static_hover_tips", "POTENTIA-RECHARGE.extraText");
             string rechargeText = StsTextUtilities.HighlightChangeText(recharge.ToString(),
                 recharge - RechargeTracker.RechargeAmount[cardModel]);
-            locString.Add("Recharge", rechargeText);
+
+            LocString locString;
+            if (cardModel.IsInCombat || cardModel.UpgradePreviewType == CardUpgradePreviewType.Combat)
+            {
+                locString = new LocString("static_hover_tips", "POTENTIA-RECHARGE.extraTextInCombat");
+                locString.Add("Recharge", rechargeText);
+                // Intentional integer division to ensure fractional amounts are rounded down, as is always supposed to
+                // be the case in Slay the Spire 2.
+                locString.Add("Energy", cardModel.EnergyCost.GetAmountToSpend() * recharge / 3);
+            }
+            else
+            {
+                locString = new LocString("static_hover_tips", "POTENTIA-RECHARGE.extraText");
+                locString.Add("Recharge", rechargeText);
+            }
+            
             source.Add(locString.GetFormattedText());
         }
 
