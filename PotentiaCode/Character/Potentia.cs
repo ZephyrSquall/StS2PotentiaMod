@@ -30,7 +30,8 @@ public class Potentia : PlaceholderCharacterModel
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
-        ModelDb.Card<Defend>()
+        ModelDb.Card<Defend>(),
+        ModelDb.Card<UnnamedBasicAttack1>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
