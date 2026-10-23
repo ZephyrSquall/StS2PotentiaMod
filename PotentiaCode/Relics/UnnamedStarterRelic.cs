@@ -11,7 +11,7 @@ using Potentia.PotentiaCode.Utilities;
 
 namespace Potentia.PotentiaCode.Relics;
 
-public class StarterRelic() : PotentiaRelic, IModifyRecharge
+public class UnnamedStarterRelic() : PotentiaRelic, IModifyRecharge
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
 

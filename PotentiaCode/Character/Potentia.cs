@@ -31,12 +31,12 @@ public class Potentia : PlaceholderCharacterModel
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
-        ModelDb.Card<UnnamedBasicAttack1>()
+        ModelDb.Card<UnnamedBasicSkill1>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<StarterRelic>()
+        ModelDb.Relic<UnnamedStarterRelic>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<PotentiaCardPool>();

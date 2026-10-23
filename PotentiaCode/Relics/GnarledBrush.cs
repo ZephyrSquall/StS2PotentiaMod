@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
@@ -16,11 +17,17 @@ public class GnarledBrush() : PotentiaRelic
 
     public override bool HasUponPickupEffect => true;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3)];
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromEnchantment<Polychrome>();
 
     public override async Task AfterObtained()
     {
-        CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1);
+        CardSelectorPrefs prefs =
+            new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 0, DynamicVars.Cards.IntValue)
+            {
+                Cancelable = false, RequireManualConfirmation = true
+            };
         Polychrome canonicalPolychrome = ModelDb.Enchantment<Polychrome>();
         foreach (CardModel card in await CardSelectCmd.FromDeckForEnchantment(Owner, canonicalPolychrome, 1, prefs))
         {
