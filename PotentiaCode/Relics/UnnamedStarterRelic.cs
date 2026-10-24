@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 using Potentia.PotentiaCode.Hooks;
@@ -15,7 +16,17 @@ public class UnnamedStarterRelic() : PotentiaRelic, IModifyRecharge
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DynamicVar("Recharge", 1)
+    ];
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
+    
+    public override RelicModel? GetUpgradeReplacement()
+    {
+        return ModelDb.Relic<UnnamedStarterRelicUpgrade>();
+    }
 
     private bool HasSpentEnergyOnXCardThisTurn =>
         CombatManager.Instance.History.CardPlaysFinished.Any(e =>
@@ -25,7 +36,7 @@ public class UnnamedStarterRelic() : PotentiaRelic, IModifyRecharge
     public int ModifyRecharge(CardModel card, int energySpent, int recharge)
     {
         if (card.Owner == Owner && card.EnergyCost.CostsX && energySpent > 0 && !HasSpentEnergyOnXCardThisTurn)
-            return recharge + 1;
+            return recharge + DynamicVars["Recharge"].IntValue;
         return recharge;
     }
 
