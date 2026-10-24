@@ -5,6 +5,8 @@
   "POTENTIA-UNNAMED_BASIC_SKILL1.title": "UNNAMED Basic Skill 1",
   "POTENTIA-BOLT_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {ShockPower:diff()} [gold]Shock[/gold].",
   "POTENTIA-BOLT_STRIKE.title": "Bolt Strike",
+  "POTENTIA-CONSERVATION_OF_ENERGY.description": "Whenever you spend energy on a cost X card, gain {ConservationOfEnergyPower:plural:|{:diff()} times }that much [gold]Block[/gold].",
+  "POTENTIA-CONSERVATION_OF_ENERGY.title": "Conservation of Energy",
   "POTENTIA-DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-DEFEND.title": "Defend",
   "POTENTIA-MAGNITUDE_STRIKE.description": "Deal {Damage:diff()} damage X times.",

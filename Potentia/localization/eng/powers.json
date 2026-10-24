@@ -1,4 +1,7 @@
 {
+  "POTENTIA-CONSERVATION_OF_ENERGY_POWER.description": "Whenever you spend energy on a cost [blue]X[/blue] card, gain that much [gold]Block[/gold] per level of [gold]Conservation of Energy[/gold].",
+  "POTENTIA-CONSERVATION_OF_ENERGY_POWER.smartDescription": "Whenever you spend energy on a cost [blue]X[/blue] card, gain {Amount:plural:|[blue]{}[/blue] times }that much [gold]Block[/gold].",
+  "POTENTIA-CONSERVATION_OF_ENERGY_POWER.title": "Conservation of Energy",
   "POTENTIA-SHOCK_POWER.description": "Whenever you spend energy, deal that much damage to the enemy per level of [gold]Shock[/gold]. Each turn, [gold]Shock[/gold] is reduced by [blue]1[/blue].",
   "POTENTIA-SHOCK_POWER.remoteDescription": "Whenever [gold]{ApplierName}[/gold] spends energy, they deal {Amount:plural:|[blue]{}[/blue] times }that much damage to this creature. Each turn, [gold]Shock[/gold] is reduced by [blue]1[/blue].",
   "POTENTIA-SHOCK_POWER.smartDescription": "Whenever you spend energy, deal {Amount:plural:|[blue]{}[/blue] times }that much damage to this creature. Each turn, [gold]Shock[/gold] is reduced by [blue]1[/blue].",

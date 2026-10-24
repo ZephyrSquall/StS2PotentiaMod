@@ -14,9 +14,7 @@ namespace Potentia.PotentiaCode.Powers;
 public class ShockPower() : PotentiaPower
 {
     public override PowerType Type => PowerType.Debuff;
-
     public override PowerStackType StackType => PowerStackType.Counter;
-
     public override PowerInstanceType InstanceType => PowerInstanceType.InstancedPerApplier;
 
     protected override object InitInternalData() => new Data();

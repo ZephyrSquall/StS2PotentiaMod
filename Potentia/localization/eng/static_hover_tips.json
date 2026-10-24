@@ -1,6 +1,6 @@
 {
   "POTENTIA-RECHARGE.extraText": "[gold]Recharge[/gold] {Recharge}.",
-  "POTENTIA-RECHARGE.extraTextInCombat": "[gold]Recharge[/gold] {Recharge} (Gain {Energy:energyIcons()}).",
+  "POTENTIA-RECHARGE.extraTextInCombat": "[gold]Recharge[/gold] {Recharge}. (Gain {Energy:energyIcons()})",
   "POTENTIA-RECHARGE_DYNAMIC.description": "Regain {Recharge:plural:[blue]{}[/blue] third|[blue]{}[/blue] thirds} of the energy spent to play this card.",
   "POTENTIA-RECHARGE_DYNAMIC.title": "Recharge",
   "POTENTIA-RECHARGE_STATIC.description": "Regain a third of the energy spent to play this card per level of [gold]Recharge[/gold].",
