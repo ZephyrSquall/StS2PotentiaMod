@@ -20,5 +20,7 @@
   "POTENTIA-MAGNITUDE_STRIKE.description": "Deal {Damage:diff()} damage X times.",
   "POTENTIA-MAGNITUDE_STRIKE.title": "Magnitude Strike",
   "POTENTIA-STRIKE.description": "Deal {Damage:diff()} damage.",
-  "POTENTIA-STRIKE.title": "Strike"
+  "POTENTIA-STRIKE.title": "Strike",
+  "POTENTIA-SUGAR_AND_SPICE.description": "Deal {Damage:diff()} damage.\n[gold]Transform[/gold] all [gold]Strikes[/gold] and [gold]Defends[/gold] in your [gold]Hand[/gold] into [gold]{IfUpgraded:show:Ultimate Strikes+|Ultimate Strikes}[/gold] and [gold]{IfUpgraded:show:Ultimate Defends+|Ultimate Defends}[/gold].",
+  "POTENTIA-SUGAR_AND_SPICE.title": "Sugar and Spice"
 }
