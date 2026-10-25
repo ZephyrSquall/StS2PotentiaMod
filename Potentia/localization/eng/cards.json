@@ -13,6 +13,8 @@
   "POTENTIA-CONSERVATION_OF_ENERGY.title": "Conservation of Energy",
   "POTENTIA-DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-DEFEND.title": "Defend",
+  "POTENTIA-FATAL_AMP.description": "Apply {ShockPower:diff()} [gold]Shock[/gold].",
+  "POTENTIA-FATAL_AMP.title": "Fatal Amp",
   "POTENTIA-INFINITE_STRIKE.description": "Deal {Damage:diff()} damage.\nIf [gold]Fatal[/gold], this card permanently gains [gold]Replay[/gold] {Replay:diff()}.",
   "POTENTIA-INFINITE_STRIKE.title": "Infinite Strike",
   "POTENTIA-KINETIC_POTENTIAL.description": "Whenever you [gold]Transform[/gold] a card, gain {KineticPotentialPower:diff()} [gold]Vigor[/gold].",
