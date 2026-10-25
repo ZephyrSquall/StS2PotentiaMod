@@ -19,6 +19,8 @@
   "POTENTIA-KINETIC_POTENTIAL.title": "Kinetic Potential",
   "POTENTIA-MAGNITUDE_STRIKE.description": "Deal {Damage:diff()} damage X times.",
   "POTENTIA-MAGNITUDE_STRIKE.title": "Magnitude Strike",
+  "POTENTIA-RECURSIVE_SHIELD.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "POTENTIA-RECURSIVE_SHIELD.title": "Recursive Shield",
   "POTENTIA-STRIKE.description": "Deal {Damage:diff()} damage.",
   "POTENTIA-STRIKE.title": "Strike",
   "POTENTIA-SUGAR_AND_SPICE.description": "Deal {Damage:diff()} damage.\n[gold]Transform[/gold] all [gold]Strikes[/gold] and [gold]Defends[/gold] in your [gold]Hand[/gold] into [gold]{IfUpgraded:show:Ultimate Strikes+|Ultimate Strikes}[/gold] and [gold]{IfUpgraded:show:Ultimate Defends+|Ultimate Defends}[/gold].",
