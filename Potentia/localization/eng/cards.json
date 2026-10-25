@@ -20,6 +20,8 @@
   "POTENTIA-FATAL_AMP.title": "Fatal Amp",
   "POTENTIA-INFINITE_STRIKE.description": "Deal {Damage:diff()} damage.\nIf [gold]Fatal[/gold], this card permanently gains [gold]Replay[/gold] {Replay:diff()}.",
   "POTENTIA-INFINITE_STRIKE.title": "Infinite Strike",
+  "POTENTIA-JOLT.description": "The next time you play a cost X card, draw X cards next turn.",
+  "POTENTIA-JOLT.title": "Jolt",
   "POTENTIA-KINETIC_POTENTIAL.description": "Whenever you [gold]Transform[/gold] a card, gain {KineticPotentialPower:diff()} [gold]Vigor[/gold].",
   "POTENTIA-KINETIC_POTENTIAL.title": "Kinetic Potential",
   "POTENTIA-MAGNITUDE_STRIKE.description": "Deal {Damage:diff()} damage X times.",
