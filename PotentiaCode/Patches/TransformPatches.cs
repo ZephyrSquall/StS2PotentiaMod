@@ -2,6 +2,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -9,6 +10,7 @@ using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Random;
+using Potentia.PotentiaCode.CombatHistoryEntries;
 using Potentia.PotentiaCode.Hooks;
 
 namespace Potentia.PotentiaCode.Patches;
@@ -47,6 +49,11 @@ internal class AddTransformHookPatch
     // This intentionally has the same arguments as Hook.AfterCardGeneratedForCombat so this can directly replace it.
     public static async Task TranspilerAddedCode(ICombatState combatState, CardModel cardAdded, Player owner)
     {
+        CombatHistory combatHistory = CombatManager.Instance.History;
+        combatHistory.Add(combatState,
+            new CardTransformedEntry(cardAdded, owner, combatState.RoundNumber, combatState.CurrentSide, combatHistory,
+                combatState.Players));
+
         await PotentiaHooks.AfterTransform(combatState, cardAdded, owner);
 
         // Add the original hook back so the game doesn't skip it.

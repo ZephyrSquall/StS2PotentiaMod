@@ -3,6 +3,8 @@
   "POTENTIA-UNNAMED_ANCIENT_SKILL1.title": "UNNAMED Ancient Skill 1",
   "POTENTIA-UNNAMED_BASIC_SKILL1.description": "Enemy loses {Damage:diff()} HP X times.\nIf this costs exactly {Energy:energyIcons()}, gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-UNNAMED_BASIC_SKILL1.title": "UNNAMED Basic Skill 1",
+  "POTENTIA-UNNAMED_COMMON_ATTACK4.description": "Deal {Damage:diff()} damage to ALL enemies.\nThis costs 0 {energyPrefix:energyIcons(1)} if you have [gold]Transformed[/gold] a card this turn.",
+  "POTENTIA-UNNAMED_COMMON_ATTACK4.title": "UNNAMED Common Attack 4",
   "POTENTIA-UNNAMED_UNCOMMON_POWER5.description": "Whenever you [gold]Transform[/gold] a card, gain {UnnamedUncommonPower5Power:diff()} [gold]Block[/gold].",
   "POTENTIA-UNNAMED_UNCOMMON_POWER5.title": "UNNAMED Uncommon Power 5",
   "POTENTIA-BOLT_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {ShockPower:diff()} [gold]Shock[/gold].",

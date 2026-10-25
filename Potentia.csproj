@@ -36,10 +36,15 @@
 
     <ItemGroup>
         <PackageReference Include="Alchyr.Sts2.BaseLib" Version="*" PrivateAssets="All"/>
+        <PackageReference Include="Krafs.Publicizer" Version="2.3.2" PrivateAssets="All"/>
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="*"/>
         <!-- Generates a .pck file when building if only using simple assets. May not work on all setups. Uncomment to test. -->
         <!-- <PackageReference Include="BSchneppe.StS2.PckPacker" Version="0.1.1" PrivateAssets="All" /> -->
         <AdditionalFiles Include="Potentia/localization/**/*.json"/> <!-- Used by analyzer -->
+    </ItemGroup>
+
+    <ItemGroup>
+        <Publicize Include="sts2:MegaCrit.Sts2.Core.Combat.History.CombatHistory.Add"/> <!--Needed by PotentiaCode/Patches/TransformPatches.cs-->
     </ItemGroup>
 
     <ItemGroup>
