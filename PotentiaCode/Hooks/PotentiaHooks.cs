@@ -1,3 +1,5 @@
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 using Potentia.PotentiaCode.Patches;
 
@@ -5,6 +7,12 @@ namespace Potentia.PotentiaCode.Hooks;
 
 public class PotentiaHooks
 {
+    public static async Task AfterTransform(ICombatState combatState, CardModel card, Player? transformer)
+    {
+        foreach (var model in combatState.IterateHookListeners().OfType<IAfterTransform>())
+            await model.AfterTransform(combatState, card, transformer);
+    }
+
     public static int ModifyRecharge(CardModel card, int? energySpent)
     {
         int recharge = RechargeTracker.RechargeAmount[card];

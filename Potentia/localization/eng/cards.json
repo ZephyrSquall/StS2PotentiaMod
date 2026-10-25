@@ -9,6 +9,8 @@
   "POTENTIA-CONSERVATION_OF_ENERGY.title": "Conservation of Energy",
   "POTENTIA-DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-DEFEND.title": "Defend",
+  "POTENTIA-KINETIC_POTENTIAL.description": "Whenever you [gold]Transform[/gold] a card, gain {KineticPotentialPower:diff()} [gold]Vigor[/gold].",
+  "POTENTIA-KINETIC_POTENTIAL.title": "Kinetic Potential",
   "POTENTIA-MAGNITUDE_STRIKE.description": "Deal {Damage:diff()} damage X times.",
   "POTENTIA-MAGNITUDE_STRIKE.title": "Magnitude Strike",
   "POTENTIA-STRIKE.description": "Deal {Damage:diff()} damage.",
