@@ -1,6 +1,4 @@
-using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -10,7 +8,7 @@ using Potentia.PotentiaCode.Hooks;
 
 namespace Potentia.PotentiaCode.Powers;
 
-public class KineticPotentialPower() : PotentiaPower, IAfterTransform
+public class KineticPotentialPower() : PotentiaPower, IAfterCardTransformedForCombat
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -20,9 +18,9 @@ public class KineticPotentialPower() : PotentiaPower, IAfterTransform
         HoverTipFactory.Static(StaticHoverTip.Transform), HoverTipFactory.FromPower<VigorPower>()
     ];
 
-    public async Task AfterTransform(ICombatState combatState, CardModel card, Player? transformer)
+    public async Task AfterCardTransformedForCombat(CardModel card)
     {
-        if (transformer != null && transformer.Creature == Owner)
+        if (card.Owner.Creature == Owner)
         {
             Flash();
             await PowerCmd.Apply<VigorPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);

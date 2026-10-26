@@ -18,7 +18,7 @@ public class JoltPower() : PotentiaPower
     // called, so ResolveEnergyXValue will get the correct value for this card play.
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature == Owner && cardPlay.Card.EnergyCost.CostsX && cardPlay.IsFirstInSeries)
+        if (cardPlay.Card.Owner.Creature == Owner && cardPlay.Card.EnergyCost.CostsX)
             GetInternalData<Data>().xAmountsForPlayedCards.Add(cardPlay.Card, cardPlay.Card.ResolveEnergyXValue());
         return Task.CompletedTask;
     }

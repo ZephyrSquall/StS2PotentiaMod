@@ -14,6 +14,8 @@
   "POTENTIA-CEASE_MOTION.title": "Cease Motion",
   "POTENTIA-CONSERVATION_OF_ENERGY.description": "Whenever you spend energy on a cost X card, gain {ConservationOfEnergyPower:plural:|{:diff()} times }that much [gold]Block[/gold].",
   "POTENTIA-CONSERVATION_OF_ENERGY.title": "Conservation of Energy",
+  "POTENTIA-CONSERVE.description": "Deal {Damage:diff()} damage.\nThe next cost X card you play has {Recharge:diff()} additional [gold]Recharge[/gold].",
+  "POTENTIA-CONSERVE.title": "Conserve",
   "POTENTIA-DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-DEFEND.title": "Defend",
   "POTENTIA-FATAL_AMP.description": "Apply {ShockPower:diff()} [gold]Shock[/gold].",

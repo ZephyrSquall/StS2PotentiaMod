@@ -1,5 +1,4 @@
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 using Potentia.PotentiaCode.Patches;
 
@@ -7,10 +6,10 @@ namespace Potentia.PotentiaCode.Hooks;
 
 public class PotentiaHooks
 {
-    public static async Task AfterTransform(ICombatState combatState, CardModel card, Player? transformer)
+    public static async Task AfterCardTransformedForCombat(ICombatState combatState, CardModel card)
     {
-        foreach (var model in combatState.IterateHookListeners().OfType<IAfterTransform>())
-            await model.AfterTransform(combatState, card, transformer);
+        foreach (var model in combatState.IterateHookListeners().OfType<IAfterCardTransformedForCombat>())
+            await model.AfterCardTransformedForCombat(card);
     }
 
     public static int ModifyRecharge(CardModel card, int? energySpent)
@@ -27,13 +26,20 @@ public class PotentiaHooks
         // have used `move_child.call_deferred(child, index)`.
         if (card.CombatState == null) return recharge;
 
-        // energySpent indicates the amount of energy spent on the card. If it is null, that means the card hasn't
-        // actually been played, and we're calling ModifyRecharge to get a number for display purposes; in this case,
-        // predict what the energy spent will be.
+        // energySpent indicates the amount of energy spent on the card. If it is null, that has a special meaning: This
+        // card hasn't actually been played, and we're calling ModifyRecharge to get a preview number for display
+        // purposes; in this case, predict what the energy spent will be.
         int actualOrPredictedEnergySpent = energySpent ?? card.EnergyCost.GetAmountToSpend();
 
         foreach (var model in card.CombatState.IterateHookListeners().OfType<IModifyRecharge>())
-            recharge = model.ModifyRecharge(card, actualOrPredictedEnergySpent, recharge);
+        {
+            int newRecharge = model.ModifyRecharge(card, actualOrPredictedEnergySpent, recharge);
+            if (energySpent != null && newRecharge != recharge &&
+                model is IAfterModifyingRecharge afterModifyingRechargeModel)
+                afterModifyingRechargeModel.AfterModifyingRecharge(card);
+            recharge = newRecharge;
+        }
+
         return recharge;
     }
 }

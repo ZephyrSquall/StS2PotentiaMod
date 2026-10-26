@@ -37,7 +37,8 @@ internal class AddTransformHookPatch
 
         // To get the game to run our added method asynchronously, bundle it together with an already-existing async
         // method call, in this case Hook.AfterCardGeneratedForCombat. This is pretty much exactly the hook we want
-        // except we want the AfterTransform hook to run exclusively here and not for any other way of creating cards.
+        // except we want the AfterCardTransformedForCombat hook to run exclusively here and not for any other way of
+        // creating cards.
         codeMatcher
             .MatchStartForward(CodeMatch.Calls(() => Hook.AfterCardGeneratedForCombat(default, default, default)))
             .ThrowIfInvalid("Could not find call to Hook.AfterCardGeneratedForCombat")
@@ -54,7 +55,12 @@ internal class AddTransformHookPatch
             new CardTransformedEntry(cardAdded, owner, combatState.RoundNumber, combatState.CurrentSide, combatHistory,
                 combatState.Players));
 
-        await PotentiaHooks.AfterTransform(combatState, cardAdded, owner);
+        // In the Transform method, owner is simply calculated from cardAdded.Owner. Presumably this is because there is
+        // no way in the base game for a player to Transform a card owned by another player, so the Transform method
+        // assumes the card owner is the one who must have caused the Transformation. Hence, to avoid giving the false
+        // impression that the one responsible for Transforming the card can be different from cardAdded.Owner, the
+        // owner argument is intentionally omitted from AfterCardTransformedForCombat.
+        await PotentiaHooks.AfterCardTransformedForCombat(combatState, cardAdded);
 
         // Add the original hook back so the game doesn't skip it.
         await Hook.AfterCardGeneratedForCombat(combatState, cardAdded, owner);
