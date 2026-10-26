@@ -17,5 +17,8 @@
   "POTENTIA-SHOCK_POWER.description": "Whenever you spend energy, deal that much damage to the enemy per level of [gold]Shock[/gold]. Each turn, [gold]Shock[/gold] is reduced by [blue]1[/blue].",
   "POTENTIA-SHOCK_POWER.remoteDescription": "Whenever [gold]{ApplierName}[/gold] spends energy, they deal {Amount:plural:|[blue]{}[/blue] times }that much damage to this creature. Each turn, [gold]Shock[/gold] is reduced by [blue]1[/blue].",
   "POTENTIA-SHOCK_POWER.smartDescription": "Whenever you spend energy, deal {Amount:plural:|[blue]{}[/blue] times }that much damage to this creature. Each turn, [gold]Shock[/gold] is reduced by [blue]1[/blue].",
-  "POTENTIA-SHOCK_POWER.title": "Shock"
+  "POTENTIA-SHOCK_POWER.title": "Shock",
+  "POTENTIA-STATIC_DISCHARGE_POWER.description": "Every {energyPrefix:energyIcons(2)} you spend, apply [blue]2[/blue] [gold]Shock[/gold] to ALL enemies.",
+  "POTENTIA-STATIC_DISCHARGE_POWER.smartDescription": "Every {Energy:energyIcons()} you spend, apply [blue]{Amount}[/blue] [gold]Shock[/gold] to ALL enemies.",
+  "POTENTIA-STATIC_DISCHARGE_POWER.title": "Static Discharge"
 }

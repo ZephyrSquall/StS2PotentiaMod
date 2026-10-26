@@ -39,6 +39,8 @@
   "POTENTIA-REFRAIN.description": "Gain {Block:diff()} [gold]Block[/gold] X times.\nAdd [gold]Retain[/gold] to X cards in your [gold]Hand[/gold].",
   "POTENTIA-REFRAIN.selectionScreenPrompt": "Select {Amount:plural:a card|[blue]{}[/blue] cards} to add [gold]Retain[/gold] to.",
   "POTENTIA-REFRAIN.title": "Refrain",
+  "POTENTIA-STATIC_DISCHARGE.description": "Every {Energy:energyIcons()} you spend, apply {StaticDischargePower:diff()} [gold]Shock[/gold] to ALL enemies.",
+  "POTENTIA-STATIC_DISCHARGE.title": "Static Discharge",
   "POTENTIA-STRIKE.description": "Deal {Damage:diff()} damage.",
   "POTENTIA-STRIKE.title": "Strike",
   "POTENTIA-SUGAR_AND_SPICE.description": "Deal {Damage:diff()} damage.\n[gold]Transform[/gold] all [gold]Strikes[/gold] and [gold]Defends[/gold] in your [gold]Hand[/gold] into [gold]{IfUpgraded:show:Ultimate Strikes+|Ultimate Strikes}[/gold] and [gold]{IfUpgraded:show:Ultimate Defends+|Ultimate Defends}[/gold].",
