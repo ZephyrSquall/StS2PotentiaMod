@@ -20,6 +20,8 @@
   "POTENTIA-DEFEND.title": "Defend",
   "POTENTIA-FATAL_AMP.description": "Apply {ShockPower:diff()} [gold]Shock[/gold].",
   "POTENTIA-FATAL_AMP.title": "Fatal Amp",
+  "POTENTIA-HEAVY_STAB.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each other card in your [gold]Hand[/gold].",
+  "POTENTIA-HEAVY_STAB.title": "Heavy Stab",
   "POTENTIA-INFINITE_STRIKE.description": "Deal {Damage:diff()} damage.\nIf [gold]Fatal[/gold], this card permanently gains [gold]Replay[/gold] {Replay:diff()}.",
   "POTENTIA-INFINITE_STRIKE.title": "Infinite Strike",
   "POTENTIA-JOLT.description": "The next time you play a cost X card, draw X cards next turn.",
