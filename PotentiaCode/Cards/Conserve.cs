@@ -13,7 +13,7 @@ public class Conserve() : PotentiaCard(2, CardType.Attack, CardRarity.Uncommon, 
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(15, ValueProp.Move), new IntVar("Recharge", ConservePower.Recharge)
+        new DamageVar(14, ValueProp.Move), new IntVar("Recharge", ConservePower.Recharge)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
@@ -28,5 +28,5 @@ public class Conserve() : PotentiaCard(2, CardType.Attack, CardRarity.Uncommon, 
         await PowerCmd.Apply<ConservePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(5);
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(6);
 }

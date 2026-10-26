@@ -18,7 +18,7 @@ public class UnnamedCommonAttack4() : PotentiaCard(1, CardType.Attack, CardRarit
 
     private bool HasTransformedThisTurn =>
         CombatManager.Instance.History.Entries.OfType<CardTransformedEntry>()
-            .Any(e => e.HappenedThisTurn(Owner.Creature.CombatState) && e.Transformer == Owner);
+            .Any(e => e.HappenedThisTurn(Owner.Creature.CombatState) && e.Card.Owner == Owner);
 
     protected override bool ShouldGlowGoldInternal => HasTransformedThisTurn;
 

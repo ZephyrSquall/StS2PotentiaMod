@@ -2,7 +2,6 @@ using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -50,16 +49,12 @@ internal class AddTransformHookPatch
     // This intentionally has the same arguments as Hook.AfterCardGeneratedForCombat so this can directly replace it.
     public static async Task TranspilerAddedCode(ICombatState combatState, CardModel cardAdded, Player owner)
     {
-        CombatHistory combatHistory = CombatManager.Instance.History;
-        combatHistory.Add(combatState,
-            new CardTransformedEntry(cardAdded, owner, combatState.RoundNumber, combatState.CurrentSide, combatHistory,
-                combatState.Players));
-
         // In the Transform method, owner is simply calculated from cardAdded.Owner. Presumably this is because there is
         // no way in the base game for a player to Transform a card owned by another player, so the Transform method
         // assumes the card owner is the one who must have caused the Transformation. Hence, to avoid giving the false
         // impression that the one responsible for Transforming the card can be different from cardAdded.Owner, the
-        // owner argument is intentionally omitted from AfterCardTransformedForCombat.
+        // owner argument is intentionally omitted from CardTransformedEntry and AfterCardTransformedForCombat.
+        CombatManager.Instance.History.CardTransformed(combatState, cardAdded);
         await PotentiaHooks.AfterCardTransformedForCombat(combatState, cardAdded);
 
         // Add the original hook back so the game doesn't skip it.
