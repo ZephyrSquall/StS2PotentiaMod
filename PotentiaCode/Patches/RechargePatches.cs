@@ -35,7 +35,10 @@ internal class RechargeDescriptionPatch
             // Note the cardModel happens to already be the last thing on the stack before this instruction, so no need
             // to load that again.
             .InsertAndAdvance(CodeInstruction.LoadLocal(5))
-            .InsertAndAdvance(CodeInstruction.Call(() => TranspilerAddedCode(default, default)))
+            // Load the "previewType" argument onto the stack, which is index 2 in the raw IL (note that since this is
+            // an instance method, argument 0 is "this", so the rest of the arguments are shifted down one index).
+            .InsertAndAdvance(CodeInstruction.LoadArgument(2))
+            .InsertAndAdvance(CodeInstruction.Call(() => TranspilerAddedCode(default, default, default)))
             // Store the top of the stack into the "source" local variable.
             .InsertAndAdvance(CodeInstruction.StoreLocal(5))
             // Load the cardModel onto the stack again to restore its original state before this patch.
@@ -44,19 +47,25 @@ internal class RechargeDescriptionPatch
         return codeMatcher.Instructions();
     }
 
-    public static List<string> TranspilerAddedCode(CardModel cardModel, List<string> source)
+    public static List<string> TranspilerAddedCode(CardModel cardModel, List<string> source,
+        CardModel.DescriptionPreviewType previewType)
     {
         int recharge = PotentiaQueries.GetRecharge(cardModel);
         if (recharge > 0)
         {
-            string rechargeText = StsTextUtilities.HighlightChangeText(recharge.ToString(),
-                recharge - RechargeTracker.RechargeAmount[cardModel]);
+            string formattedRechargeValue;
+            if ((previewType == CardModel.DescriptionPreviewType.Upgrade || cardModel.UpgradePreviewType.IsPreview()) &&
+                RechargeTracker.IsRechargeIncreasedOnUpgrade[cardModel])
+                formattedRechargeValue = $"[green]{recharge}[/green]";
+            else
+                formattedRechargeValue = StsTextUtilities.HighlightChangeText(recharge.ToString(),
+                    recharge - RechargeTracker.RechargeAmount[cardModel]);
 
             LocString locString;
             if (cardModel.IsInCombat || cardModel.UpgradePreviewType == CardUpgradePreviewType.Combat)
             {
                 locString = new LocString("static_hover_tips", "POTENTIA-RECHARGE.extraTextInCombat");
-                locString.Add("Recharge", rechargeText);
+                locString.Add("Recharge", formattedRechargeValue);
                 // Intentional integer division to ensure fractional amounts are rounded down, as is always supposed to
                 // be the case in Slay the Spire 2.
                 locString.Add("Energy", cardModel.EnergyCost.GetAmountToSpend() * recharge / 3);
@@ -64,9 +73,9 @@ internal class RechargeDescriptionPatch
             else
             {
                 locString = new LocString("static_hover_tips", "POTENTIA-RECHARGE.extraText");
-                locString.Add("Recharge", rechargeText);
+                locString.Add("Recharge", formattedRechargeValue);
             }
-            
+
             source.Add(locString.GetFormattedText());
         }
 
@@ -145,6 +154,8 @@ public class RechargeClonePatch
         if (__result is CardModel resultCardModel && __instance is CardModel instanceCardModel)
         {
             RechargeTracker.RechargeAmount[resultCardModel] = RechargeTracker.RechargeAmount[instanceCardModel];
+            RechargeTracker.IsRechargeIncreasedOnUpgrade[resultCardModel] =
+                RechargeTracker.IsRechargeIncreasedOnUpgrade[instanceCardModel];
         }
     }
 }
@@ -152,4 +163,5 @@ public class RechargeClonePatch
 public class RechargeTracker
 {
     public static readonly SpireField<CardModel, int> RechargeAmount = new(() => 0);
+    public static readonly SpireField<CardModel, bool> IsRechargeIncreasedOnUpgrade = new(() => false);
 }

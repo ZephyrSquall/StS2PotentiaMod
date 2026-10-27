@@ -44,7 +44,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Publicize Include="sts2:MegaCrit.Sts2.Core.Combat.History.CombatHistory.Add"/> <!--Needed by PotentiaCode/Patches/TransformPatches.cs-->
+        <Publicize Include="sts2:MegaCrit.Sts2.Core.Combat.History.CombatHistory.Add"/> <!--Needed by PotentiaCode/CombatHistoryEntries/CardTransformedEntry.cs-->
+        <Publicize Include="sts2:MegaCrit.Sts2.Core.Models.CardModel+DescriptionPreviewType"/> <!--Needed by PotentiaCode/Patches/RechargePatches.cs-->
     </ItemGroup>
 
     <ItemGroup>
