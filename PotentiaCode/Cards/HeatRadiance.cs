@@ -10,7 +10,7 @@ using Potentia.PotentiaCode.CombatHistoryEntries;
 
 namespace Potentia.PotentiaCode.Cards;
 
-public class UnnamedCommonAttack4() : PotentiaCard(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
+public class HeatRadiance() : PotentiaCard(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7, ValueProp.Move),];
 
