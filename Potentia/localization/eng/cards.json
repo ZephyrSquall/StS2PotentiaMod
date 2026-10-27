@@ -36,6 +36,8 @@
   "POTENTIA-KINETIC_ABSORPTION.title": "Kinetic Absorption",
   "POTENTIA-KINETIC_POTENTIAL.description": "Whenever you [gold]Transform[/gold] a card, gain {KineticPotentialPower:diff()} [gold]Vigor[/gold].",
   "POTENTIA-KINETIC_POTENTIAL.title": "Kinetic Potential",
+  "POTENTIA-LOCK_ON_TARGETING.description": "Deal {Damage:diff()} damage X times, hitting enemies from right to left.\nIf this costs exactly {Energy:energyIcons()}, it deals double damage.",
+  "POTENTIA-LOCK_ON_TARGETING.title": "Lock-On Targeting",
   "POTENTIA-MAGNITUDE_STRIKE.description": "Deal {Damage:diff()} damage X times.",
   "POTENTIA-MAGNITUDE_STRIKE.title": "Magnitude Strike",
   "POTENTIA-RECURSIVE_SHIELD.description": "Gain {Block:diff()} [gold]Block[/gold].",
