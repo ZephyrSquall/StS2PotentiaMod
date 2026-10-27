@@ -7,6 +7,8 @@
   "POTENTIA-UNNAMED_UNCOMMON_POWER5.title": "UNNAMED Uncommon Power 5",
   "POTENTIA-BEAM_SHIELD.description": "Apply {CalculationBase:diff()} [gold]Shock[/gold], plus an additional {CalculationExtra:diff()} [gold]Shock[/gold] for every {BlockThreshold:diff()} [gold]Block[/gold] you have.{InCombat:\n(Apply {CalculatedShock:diff()} [gold]Shock[/gold])|}\nGain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-BEAM_SHIELD.title": "Beam Shield",
+  "POTENTIA-BLACK_OUT.description": "Apply {ShockPower:diff()} [gold]Shock[/gold] to a random enemy.",
+  "POTENTIA-BLACK_OUT.title": "Black Out",
   "POTENTIA-BOLT_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {ShockPower:diff()} [gold]Shock[/gold].",
   "POTENTIA-BOLT_STRIKE.title": "Bolt Strike",
   "POTENTIA-CEASE_MOTION.description": "Gain {Block:diff()} [gold]Block[/gold].\nAdd [gold]Retain[/gold] to a card in your [gold]Hand[/gold].",
