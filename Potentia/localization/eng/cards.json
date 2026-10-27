@@ -16,6 +16,8 @@
   "POTENTIA-CONSERVATION_OF_ENERGY.title": "Conservation of Energy",
   "POTENTIA-CONSERVE.description": "Deal {Damage:diff()} damage.\nThe next cost X card you play has {Recharge:diff()} additional [gold]Recharge[/gold].",
   "POTENTIA-CONSERVE.title": "Conserve",
+  "POTENTIA-CORROSIVE_SLASH.description": "Deal {Damage:diff()} damage.\nApply {FrailPower:diff()} [gold]Frail[/gold].{DexterityLoss:cond:>0?\nEnemy loses {DexterityLoss:diff()} [gold]Dexterity[/gold].|}\nDraw {CalculationExtra:diff()} {CalculationExtra:plural:card|cards} for each unique debuff on the enemy.{IsTargeting:\n(Draw {CalculatedCards:diff()} {CalculatedCards:plural:card|cards})|}",
+  "POTENTIA-CORROSIVE_SLASH.title": "Corrosive Slash",
   "POTENTIA-DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-DEFEND.title": "Defend",
   "POTENTIA-FATAL_AMP.description": "Apply {ShockPower:diff()} [gold]Shock[/gold].",
