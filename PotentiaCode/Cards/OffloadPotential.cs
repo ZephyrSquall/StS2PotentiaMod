@@ -9,10 +9,10 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Potentia.PotentiaCode.Cards;
 
-public class UnnamedBasicSkill1()
+public class OffloadPotential()
     : PotentiaCard(0, CardType.Skill, CardRarity.Basic, TargetType.AnyEnemy), ITranscendenceCard
 {
-    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<UnnamedAncientSkill1>();
+    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<EruptionPotential>();
 
     protected override bool HasEnergyCostX => true;
 

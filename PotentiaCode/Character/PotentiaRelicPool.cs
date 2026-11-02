@@ -6,6 +6,7 @@ namespace Potentia.PotentiaCode.Character;
 
 public class PotentiaRelicPool : CustomRelicPoolModel
 {
+    public override string EnergyColorName => Potentia.CharacterId;
     public override Color LabOutlineColor => Potentia.Color;
 
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();

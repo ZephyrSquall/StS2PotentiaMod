@@ -7,7 +7,7 @@ using Potentia.PotentiaCode.Hooks;
 
 namespace Potentia.PotentiaCode.Powers;
 
-public class UnnamedUncommonPower5Power() : PotentiaPower, IAfterCardTransformedForCombat
+public class IsolatedSystemPower() : PotentiaPower, IAfterCardTransformedForCombat
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

@@ -26,12 +26,17 @@ public class Refrain() : PotentiaCard(0, CardType.Skill, CardRarity.Uncommon, Ta
 
         for (int i = 0; i < xValue; i++) await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
 
-        LocString prompt = SelectionScreenPrompt;
-        prompt.Add("Amount", xValue);
-        CardSelectorPrefs prefs = new CardSelectorPrefs(prompt, xValue);
-        foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, Owner, prefs,
-                     c => !c.Keywords.Contains(CardKeyword.Retain), this))
-            CardCmd.ApplyKeyword(card, CardKeyword.Retain);
+        // Skip bringing up the selection screen if X is 0 (otherwise a screen will come up asking the player to pick 0
+        // cards).
+        if (xValue > 0)
+        {
+            LocString prompt = SelectionScreenPrompt;
+            prompt.Add("Amount", xValue);
+            CardSelectorPrefs prefs = new CardSelectorPrefs(prompt, xValue);
+            foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, Owner, prefs,
+                         c => !c.Keywords.Contains(CardKeyword.Retain), this))
+                CardCmd.ApplyKeyword(card, CardKeyword.Retain);
+        }
     }
 
     protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(3);

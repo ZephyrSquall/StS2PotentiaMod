@@ -13,7 +13,7 @@ namespace Potentia.PotentiaCode.Relics;
 
 public class GnarledBrush() : PotentiaRelic
 {
-    public override RelicRarity Rarity => RelicRarity.Uncommon;
+    public override RelicRarity Rarity => RelicRarity.Shop;
 
     public override bool HasUponPickupEffect => true;
 
@@ -31,7 +31,7 @@ public class GnarledBrush() : PotentiaRelic
         Polychrome canonicalPolychrome = ModelDb.Enchantment<Polychrome>();
         foreach (CardModel card in await CardSelectCmd.FromDeckForEnchantment(Owner, canonicalPolychrome, 1, prefs))
         {
-            CardCmd.Enchant(canonicalPolychrome.ToMutable(), card, 1M);
+            CardCmd.Enchant(canonicalPolychrome.ToMutable(), card, 1);
             NCardEnchantVfx child = NCardEnchantVfx.Create(card);
             if (child != null) NRun.Instance?.GlobalUi.CardPreviewContainer.AddChildSafely(child);
         }

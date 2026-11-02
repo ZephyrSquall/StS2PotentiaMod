@@ -8,9 +8,9 @@ using Potentia.PotentiaCode.Patches;
 
 namespace Potentia.PotentiaCode.Cards;
 
-public class UnnamedAncientSkill1 : PotentiaCard
+public class EruptionPotential : PotentiaCard
 {
-    public UnnamedAncientSkill1() : base(0, CardType.Skill, CardRarity.Ancient, TargetType.AnyEnemy)
+    public EruptionPotential() : base(0, CardType.Skill, CardRarity.Ancient, TargetType.AnyEnemy)
     {
         RechargeTracker.RechargeAmount[this] = 2;
     }

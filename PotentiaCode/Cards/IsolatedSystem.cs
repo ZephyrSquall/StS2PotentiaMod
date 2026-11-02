@@ -8,9 +8,9 @@ using Potentia.PotentiaCode.Powers;
 
 namespace Potentia.PotentiaCode.Cards;
 
-public class UnnamedUncommonPower5() : PotentiaCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class IsolatedSystem() : PotentiaCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<UnnamedUncommonPower5Power>(3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<IsolatedSystemPower>(3)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -19,9 +19,9 @@ public class UnnamedUncommonPower5() : PotentiaCard(1, CardType.Power, CardRarit
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<UnnamedUncommonPower5Power>(choiceContext, Owner.Creature,
-            DynamicVars.Power<UnnamedUncommonPower5Power>().BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<IsolatedSystemPower>(choiceContext, Owner.Creature,
+            DynamicVars.Power<IsolatedSystemPower>().BaseValue, Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Power<UnnamedUncommonPower5Power>().UpgradeValueBy(1);
+    protected override void OnUpgrade() => DynamicVars.Power<IsolatedSystemPower>().UpgradeValueBy(1);
 }

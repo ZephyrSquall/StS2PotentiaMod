@@ -27,7 +27,9 @@ public class XForm() : PotentiaCard(0, CardType.Power, CardRarity.Rare, TargetTy
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         int xValue = ResolveEnergyXValue();
-        if (IsUpgraded) xValue++;
+        int xPenalty = IsUpgraded ? 1 : 2;
+        xValue = Math.Max(0, xValue - xPenalty);
+        
         // Base values are taken directly from the cards that apply them, so this list should stay up-to-date if the
         // base game changes these values. The way the game defines the base values for each form card is inconsistent,
         // so it looks like I'm being inconsistent below, but I'm merely copying exactly how the base game does it.

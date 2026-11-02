@@ -9,7 +9,7 @@ using Potentia.PotentiaCode.Utilities;
 
 namespace Potentia.PotentiaCode.Cards;
 
-public class Iridescence() : PotentiaCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
+public class Led() : PotentiaCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

@@ -6,6 +6,7 @@ namespace Potentia.PotentiaCode.Character;
 
 public class PotentiaPotionPool : CustomPotionPoolModel
 {
+    public override string EnergyColorName => Potentia.CharacterId;
     public override Color LabOutlineColor => Potentia.Color;
 
 

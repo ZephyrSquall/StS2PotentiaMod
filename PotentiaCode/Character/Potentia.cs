@@ -14,6 +14,8 @@ public class Potentia : PlaceholderCharacterModel
     public const string CharacterId = "Potentia";
 
     public static readonly Color Color = new("ffff00");
+    
+    public override string PlaceholderID => "defect";
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
@@ -31,7 +33,7 @@ public class Potentia : PlaceholderCharacterModel
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
-        ModelDb.Card<UnnamedBasicSkill1>()
+        ModelDb.Card<OffloadPotential>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
