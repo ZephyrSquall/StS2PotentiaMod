@@ -7,5 +7,8 @@
   "POTENTIA-GNARLED_BRUSH.title": "Gnarled Brush",
   "POTENTIA-IMBUED_CORE.description": "The first cost [blue]X[/blue] card you spend energy on each turn has [blue]{Recharge}[/blue] additional [gold]Recharge[/gold].",
   "POTENTIA-IMBUED_CORE.flavor": "",
-  "POTENTIA-IMBUED_CORE.title": "Imbued Core"
+  "POTENTIA-IMBUED_CORE.title": "Imbued Core",
+  "POTENTIA-UNSTABLE_CABLE.description": "Whenever you apply a new debuff to an enemy, apply [blue]{ShockPower}[/blue] [gold]Shock[/gold].",
+  "POTENTIA-UNSTABLE_CABLE.flavor": "",
+  "POTENTIA-UNSTABLE_CABLE.title": "Unstable Cable"
 }
