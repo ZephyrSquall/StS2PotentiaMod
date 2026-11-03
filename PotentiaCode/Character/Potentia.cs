@@ -38,7 +38,7 @@ public class Potentia : PlaceholderCharacterModel
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<UnnamedStarterRelic>()
+        ModelDb.Relic<ChargedCore>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<PotentiaCardPool>();

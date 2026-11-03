@@ -12,16 +12,18 @@ using Potentia.PotentiaCode.Utilities;
 
 namespace Potentia.PotentiaCode.Relics;
 
-public class UnnamedStarterRelicUpgrade() : PotentiaRelic, IModifyRecharge
+public class ChargedCore() : PotentiaRelic, IModifyRecharge
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new DynamicVar("Recharge", 3)
-    ];
-    
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Recharge", 1)];
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
+
+    public override RelicModel? GetUpgradeReplacement()
+    {
+        return ModelDb.Relic<ImbuedCore>();
+    }
 
     private bool HasSpentEnergyOnXCardThisTurn =>
         CombatManager.Instance.History.CardPlaysFinished.Any(e =>

@@ -160,7 +160,7 @@ public class RechargeClonePatch
     }
 }
 
-public class RechargeTracker
+public static class RechargeTracker
 {
     public static readonly SpireField<CardModel, int> RechargeAmount = new(() => 0);
     public static readonly SpireField<CardModel, bool> IsRechargeIncreasedOnUpgrade = new(() => false);
