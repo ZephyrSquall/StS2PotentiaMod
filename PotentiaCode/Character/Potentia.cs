@@ -33,6 +33,7 @@ public class Potentia : PlaceholderCharacterModel
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
         ModelDb.Card<Defend>(),
+        ModelDb.Card<Pollute>(),
         ModelDb.Card<OffloadPotential>()
     ];
 

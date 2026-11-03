@@ -48,6 +48,8 @@
   "POTENTIA-MAGNITUDE_STRIKE.title": "Magnitude Strike",
   "POTENTIA-OFFLOAD_POTENTIAL.description": "Enemy loses {Damage:diff()} HP X times.\nIf this costs exactly {Energy:energyIcons()}, gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-OFFLOAD_POTENTIAL.title": "Offload Potential",
+  "POTENTIA-POLLUTE.description": "Randomly apply either {DemisePower:diff()} [gold]Demise[/gold], {ShockPower:diff()} [gold]Shock[/gold], or {StranglePower:diff()} [gold]Strangle[/gold]{Repeat:plural:| {:diff()} times}.",
+  "POTENTIA-POLLUTE.title": "Pollute",
   "POTENTIA-RECURSIVE_SHIELD.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-RECURSIVE_SHIELD.title": "Recursive Shield",
   "POTENTIA-REFRAIN.description": "Gain {Block:diff()} [gold]Block[/gold] X times.\nAdd [gold]Retain[/gold] to X cards in your [gold]Hand[/gold].",
