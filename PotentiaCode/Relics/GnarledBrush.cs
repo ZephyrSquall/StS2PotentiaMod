@@ -32,7 +32,7 @@ public class GnarledBrush() : PotentiaRelic
         foreach (CardModel card in await CardSelectCmd.FromDeckForEnchantment(Owner, canonicalPolychrome, 1, prefs))
         {
             CardCmd.Enchant(canonicalPolychrome.ToMutable(), card, 1);
-            NCardEnchantVfx child = NCardEnchantVfx.Create(card);
+            NCardEnchantVfx? child = NCardEnchantVfx.Create(card);
             if (child != null) NRun.Instance?.GlobalUi.CardPreviewContainer.AddChildSafely(child);
         }
     }

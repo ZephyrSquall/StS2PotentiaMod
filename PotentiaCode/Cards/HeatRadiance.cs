@@ -24,6 +24,7 @@ public class HeatRadiance() : PotentiaCard(1, CardType.Attack, CardRarity.Common
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        if (CombatState == null) throw new InvalidOperationException("CombatState is null");
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, play)
             .TargetingAllOpponents(CombatState)

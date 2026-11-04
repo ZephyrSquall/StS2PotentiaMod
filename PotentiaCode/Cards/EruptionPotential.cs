@@ -34,6 +34,7 @@ public class EruptionPotential : PotentiaCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        if (CombatState == null) throw new InvalidOperationException("CombatState is null");
         var xValue = ResolveEnergyXValue();
 
         if (play.Target == null)

@@ -19,6 +19,7 @@ public class LockOnTargeting() : PotentiaCard(0, CardType.Attack, CardRarity.Com
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        if (CombatState == null) throw new InvalidOperationException("CombatState is null");
         int xValue = ResolveEnergyXValue();
         Creature? target = null;
 
@@ -64,7 +65,7 @@ public class LockOnTargeting() : PotentiaCard(0, CardType.Attack, CardRarity.Com
             hittableTargets.Where(t => t.GetCreatureNode()?.GlobalPosition.X < lastXPos);
         if (!validTargets.Any()) validTargets = hittableTargets;
 
-        Creature? nextTarget = validTargets.MaxBy(t => t.GetCreatureNode().GlobalPosition.X);
+        Creature? nextTarget = validTargets.MaxBy(t => t.GetCreatureNode()?.GlobalPosition.X);
         return nextTarget;
     }
 }

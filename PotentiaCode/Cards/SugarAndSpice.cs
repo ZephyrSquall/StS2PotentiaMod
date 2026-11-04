@@ -20,6 +20,9 @@ public class SugarAndSpice() : PotentiaCard(2, CardType.Attack, CardRarity.Rare,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        ArgumentNullException.ThrowIfNull(play.Target);
+        if (CombatState == null) throw new InvalidOperationException("CombatState is null");
+        
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, play)
             .Targeting(play.Target)

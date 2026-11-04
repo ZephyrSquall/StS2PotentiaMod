@@ -25,6 +25,8 @@ public class Pollute() : PotentiaCard(0, CardType.Skill, CardRarity.Basic, Targe
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        ArgumentNullException.ThrowIfNull(play.Target);
+        
         IReadOnlyList<(PowerModel power, decimal baseValue)> debuffOptionsWithBaseValues =
         [
             (ModelDb.Power<DemisePower>(), DynamicVars.Power<DemisePower>().BaseValue),

@@ -20,7 +20,8 @@ public class BlackOut() : PotentiaCard(1, CardType.Skill, CardRarity.Rare, Targe
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        Creature target = Owner.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
+        if (CombatState == null) throw new InvalidOperationException("CombatState is null");
+        Creature? target = Owner.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
         if (target != null)
             await PowerCmd.Apply<ShockPower>(choiceContext, target, DynamicVars.Power<ShockPower>().BaseValue,
                 Owner.Creature, this);

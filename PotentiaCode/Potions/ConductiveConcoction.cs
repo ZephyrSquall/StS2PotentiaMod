@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using Potentia.PotentiaCode.Powers;
 
 namespace Potentia.PotentiaCode.Potions;
@@ -24,6 +25,7 @@ public sealed class ConductiveConcoction : PotentiaPotion
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
+        AssertValidForTargetedPotion(target);
         await PowerCmd.Apply<ShockPower>(choiceContext, target, DynamicVars.Power<ShockPower>().BaseValue,
             Owner.Creature, null);
     }

@@ -19,7 +19,7 @@ internal class RechargeDescriptionPatch
     {
         var method =
             typeof(CardModel).GetMethod("GetDescriptionForPile", BindingFlags.NonPublic | BindingFlags.Instance);
-        return method;
+        return method ?? throw new MissingMethodException("Could not find GetDescriptionForPile method");
     }
 
     [HarmonyTranspiler]
@@ -29,7 +29,7 @@ internal class RechargeDescriptionPatch
         var codeMatcher = new CodeMatcher(instructions);
 
         // Add modifier text immediately before where added "Replay" text would go if the card also had Replay.
-        codeMatcher.MatchStartForward(CodeMatch.Calls(() => default(CardModel).GetEnchantedReplayCount()))
+        codeMatcher.MatchStartForward(CodeMatch.Calls(() => default(CardModel)!.GetEnchantedReplayCount()))
             .ThrowIfInvalid("Could not find call to GetEnchantedReplayCount")
             // Load the "source" local variable onto the stack, which is index 5 in the raw IL.
             // Note the cardModel happens to already be the last thing on the stack before this instruction, so no need
@@ -38,7 +38,7 @@ internal class RechargeDescriptionPatch
             // Load the "previewType" argument onto the stack, which is index 2 in the raw IL (note that since this is
             // an instance method, argument 0 is "this", so the rest of the arguments are shifted down one index).
             .InsertAndAdvance(CodeInstruction.LoadArgument(2))
-            .InsertAndAdvance(CodeInstruction.Call(() => TranspilerAddedCode(default, default, default)))
+            .InsertAndAdvance(CodeInstruction.Call(() => TranspilerAddedCode(default!, default!, default)))
             // Store the top of the stack into the "source" local variable.
             .InsertAndAdvance(CodeInstruction.StoreLocal(5))
             // Load the cardModel onto the stack again to restore its original state before this patch.
@@ -92,13 +92,13 @@ public class RechargeHoverTipPatch
         var codeMatcher = new CodeMatcher(instructions);
 
         // Add modifier hover tip immediately before "Replay" hover tip.
-        codeMatcher.MatchStartForward(CodeMatch.Calls(() => default(CardModel).GetEnchantedReplayCount()))
+        codeMatcher.MatchStartForward(CodeMatch.Calls(() => default(CardModel)!.GetEnchantedReplayCount()))
             .ThrowIfInvalid("Could not find call to GetEnchantedReplayCount")
             // Load the "list" local variable onto the stack, which is index 0 in the raw IL.
             // Note the cardModel happens to already be the last thing on the stack before this instruction, so no need
             // to load that again.
             .InsertAndAdvance(CodeInstruction.LoadLocal(0))
-            .InsertAndAdvance(CodeInstruction.Call(() => TranspilerAddedCode(default, default)))
+            .InsertAndAdvance(CodeInstruction.Call(() => TranspilerAddedCode(default!, default!)))
             // Store the top of the stack into the "list" local variable.
             .InsertAndAdvance(CodeInstruction.StoreLocal(0))
             // Load the cardModel onto the stack again to restore its original state before this patch.

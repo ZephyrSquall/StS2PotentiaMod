@@ -22,6 +22,7 @@ public class MagnitudeStrike : PotentiaCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        ArgumentNullException.ThrowIfNull(play.Target);
         var xValue = ResolveEnergyXValue();
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(xValue)

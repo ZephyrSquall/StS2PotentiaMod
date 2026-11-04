@@ -39,7 +39,7 @@ internal class AddTransformHookPatch
         // except we want the AfterCardTransformedForCombat hook to run exclusively here and not for any other way of
         // creating cards.
         codeMatcher
-            .MatchStartForward(CodeMatch.Calls(() => Hook.AfterCardGeneratedForCombat(default, default, default)))
+            .MatchStartForward(CodeMatch.Calls(() => Hook.AfterCardGeneratedForCombat(default!, default!, default)))
             .ThrowIfInvalid("Could not find call to Hook.AfterCardGeneratedForCombat")
             .SetInstruction(new CodeInstruction(OpCodes.Call, combinedMethod));
 

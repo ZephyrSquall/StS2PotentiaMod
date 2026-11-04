@@ -61,6 +61,7 @@ internal class ReturnAutoCardsWithRetainToHandPatch
     [HarmonyPrefix]
     private static void ModifyCardPlayResultLocationPrefix(CardModel card, ref CardLocation cardLocation)
     {
+        if (card.CombatState == null) throw new InvalidOperationException("CombatState is null");
         if (AutoTracker.IsBeingAutoPlayedByAuto[card] && card.IsAutoThisTurn() &&
             (card.ShouldRetainThisTurn || !Hook.ShouldFlush(card.CombatState, card.Owner)) &&
             cardLocation.pileType == PileType.Discard)
@@ -97,7 +98,7 @@ internal class SingleTurnAutoDescriptionPatch
     {
         var method =
             typeof(CardModel).GetMethod("GetDescriptionForPile", BindingFlags.NonPublic | BindingFlags.Instance);
-        return method;
+        return method ?? throw new MissingMethodException("Could not find GetDescriptionForPile method");
     }
 
     [HarmonyPostfix]
