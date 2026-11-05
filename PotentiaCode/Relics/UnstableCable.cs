@@ -11,7 +11,7 @@ using Potentia.PotentiaCode.Powers;
 
 namespace Potentia.PotentiaCode.Relics;
 
-public class UnstableCable() : PotentiaRelic
+public class UnstableCable : PotentiaRelic
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;
 

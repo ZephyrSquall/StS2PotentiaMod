@@ -12,7 +12,7 @@ using Potentia.PotentiaCode.Utilities;
 
 namespace Potentia.PotentiaCode.Relics;
 
-public class ChargedCore() : PotentiaRelic, IModifyRecharge
+public class ChargedCore : PotentiaRelic, IModifyRecharge
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
 

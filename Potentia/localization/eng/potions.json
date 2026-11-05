@@ -1,4 +1,7 @@
 {
   "POTENTIA-CONDUCTIVE_CONCOCTION.description": "Apply [blue]{ShockPower}[/blue] [gold]Shock[/gold].",
-  "POTENTIA-CONDUCTIVE_CONCOCTION.title": "Conductive Concoction"
+  "POTENTIA-CONDUCTIVE_CONCOCTION.title": "Conductive Concoction",
+  "POTENTIA-CONSERVATION_BREW.description": "[gold]Transform[/gold] up to [blue]{Cards}[/blue] {Cards:plural:card|cards} in your [gold]Hand[/gold].",
+  "POTENTIA-CONSERVATION_BREW.selectionScreenPrompt": "Choose up to [blue]{Amount}[/blue] cards to [gold]Transform[/gold].",
+  "POTENTIA-CONSERVATION_BREW.title": "Conservation Brew"
 }

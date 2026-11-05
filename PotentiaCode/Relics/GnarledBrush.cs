@@ -11,7 +11,7 @@ using Potentia.PotentiaCode.Enchantments;
 
 namespace Potentia.PotentiaCode.Relics;
 
-public class GnarledBrush() : PotentiaRelic
+public class GnarledBrush : PotentiaRelic
 {
     public override RelicRarity Rarity => RelicRarity.Shop;
 
