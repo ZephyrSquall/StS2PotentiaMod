@@ -3,5 +3,7 @@
   "POTENTIA-CONDUCTIVE_CONCOCTION.title": "Conductive Concoction",
   "POTENTIA-CONSERVATION_BREW.description": "[gold]Transform[/gold] up to [blue]{Cards}[/blue] {Cards:plural:card|cards} in your [gold]Hand[/gold].",
   "POTENTIA-CONSERVATION_BREW.selectionScreenPrompt": "Choose up to [blue]{Amount}[/blue] cards to [gold]Transform[/gold].",
-  "POTENTIA-CONSERVATION_BREW.title": "Conservation Brew"
+  "POTENTIA-CONSERVATION_BREW.title": "Conservation Brew",
+  "POTENTIA-SERUM_X.description": "All cost [blue]X[/blue] cards and cards costing {Energy:energyIcons()} or more gain [blue]{Recharge}[/blue] [gold]Recharge[/gold] this combat.",
+  "POTENTIA-SERUM_X.title": "Serum X"
 }
