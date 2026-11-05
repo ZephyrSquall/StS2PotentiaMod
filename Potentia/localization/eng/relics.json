@@ -1,4 +1,7 @@
 {
+  "POTENTIA-AUTUMNS_TOUCH.description": "At the start of your turn, [gold]Transform[/gold] [blue]{Cards}[/blue] {Cards:plural:card|cards} in your [gold]Hand[/gold] into {Cards:plural:a random card|random cards} of [blue]1[/blue] higher rarity. [gold]Rare[/gold] cards become random upgraded [gold]Rare[/gold] cards. Cards that are not [gold]Common[/gold], [gold]Uncommon[/gold], or [gold]Rare[/gold] become a random [gold]Common[/gold] Potentia card.",
+  "POTENTIA-AUTUMNS_TOUCH.flavor": "",
+  "POTENTIA-AUTUMNS_TOUCH.title": "Autumn's Touch",
   "POTENTIA-CHARGED_CORE.description": "The first cost [blue]X[/blue] card you spend energy on each turn has [blue]{Recharge}[/blue] additional [gold]Recharge[/gold].",
   "POTENTIA-CHARGED_CORE.flavor": "",
   "POTENTIA-CHARGED_CORE.title": "Charged Core",
