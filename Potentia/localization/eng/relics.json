@@ -21,6 +21,9 @@
   "POTENTIA-PISTON.flavor": "",
   "POTENTIA-PISTON.selectionScreenPrompt": "Select a card to add [gold]Retain[/gold] to.",
   "POTENTIA-PISTON.title": "Piston",
+  "POTENTIA-THE_SECOND_HAND.description": "Whenever you spend energy on a cost [blue]X[/blue] card, a random card in your [gold]Hand[/gold] is free to play that turn.",
+  "POTENTIA-THE_SECOND_HAND.flavor": "",
+  "POTENTIA-THE_SECOND_HAND.title": "The Second Hand",
   "POTENTIA-UNSTABLE_CABLE.description": "Whenever you apply a new debuff to an enemy, apply [blue]{ShockPower}[/blue] [gold]Shock[/gold].",
   "POTENTIA-UNSTABLE_CABLE.flavor": "",
   "POTENTIA-UNSTABLE_CABLE.title": "Unstable Cable"
