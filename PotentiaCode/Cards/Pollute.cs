@@ -14,27 +14,28 @@ public class Pollute() : PotentiaCard(0, CardType.Skill, CardRarity.Basic, Targe
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DemisePower>(2), new PowerVar<ShockPower>(2), new PowerVar<StranglePower>(2), new RepeatVar(1)
+        new PowerVar<MercuryPower>(2), new PowerVar<ShockPower>(2), new PowerVar<StranglePower>(2)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<DemisePower>(), HoverTipFactory.FromPower<ShockPower>(),
+        HoverTipFactory.FromPower<MercuryPower>(), HoverTipFactory.FromPower<ShockPower>(),
         HoverTipFactory.FromPower<StranglePower>(),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target);
-        
+
         IReadOnlyList<(PowerModel power, decimal baseValue)> debuffOptionsWithBaseValues =
         [
-            (ModelDb.Power<DemisePower>(), DynamicVars.Power<DemisePower>().BaseValue),
+            (ModelDb.Power<MercuryPower>(), DynamicVars.Power<MercuryPower>().BaseValue),
             (ModelDb.Power<ShockPower>(), DynamicVars.Power<ShockPower>().BaseValue),
             (ModelDb.Power<StranglePower>(), DynamicVars.Power<StranglePower>().BaseValue),
         ];
 
-        for (int i = 0; i < DynamicVars.Repeat.BaseValue; i++)
+        int times = IsUpgraded ? 2 : 1;
+        for (int i = 0; i < times; i++)
         {
             (PowerModel canonicalDebuffPower, decimal baseValue) =
                 Owner.RunState.Rng.Niche.NextItem(debuffOptionsWithBaseValues);
@@ -42,6 +43,4 @@ public class Pollute() : PotentiaCard(0, CardType.Skill, CardRarity.Basic, Targe
             await PowerCmd.Apply(choiceContext, debuffPower, play.Target, baseValue, Owner.Creature, this);
         }
     }
-
-    protected override void OnUpgrade() => DynamicVars.Repeat.UpgradeValueBy(1);
 }
