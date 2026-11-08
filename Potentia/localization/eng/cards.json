@@ -59,6 +59,8 @@
   "POTENTIA-REFRAIN.title": "Refrain",
   "POTENTIA-RENEW.description": "Gain {Block:diff()} [gold]Block[/gold] X times.\nGain X {energyPrefix:energyIcons(1)} at the start of each turn.",
   "POTENTIA-RENEW.title": "Renew",
+  "POTENTIA-RUNOFF.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Transform[/gold] 1 card{IfUpgraded:show:| at random}.",
+  "POTENTIA-RUNOFF.title": "Runoff",
   "POTENTIA-STATIC_DISCHARGE.description": "Every {Energy:energyIcons()} you spend, apply {StaticDischargePower:diff()} [gold]Shock[/gold] to ALL enemies.",
   "POTENTIA-STATIC_DISCHARGE.title": "Static Discharge",
   "POTENTIA-STRIKE.description": "Deal {Damage:diff()} damage.",
