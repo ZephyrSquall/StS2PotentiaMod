@@ -48,6 +48,8 @@
   "POTENTIA-LOCK_ON_TARGETING.title": "Lock-On Targeting",
   "POTENTIA-MAGNITUDE_STRIKE.description": "Deal {Damage:diff()} damage X times.",
   "POTENTIA-MAGNITUDE_STRIKE.title": "Magnitude Strike",
+  "POTENTIA-NODE_PROD.description": "Deal {Damage:diff()} damage.\nWhenever you draw this card, draw another {Cards:plural:card|{:diff()} cards}.",
+  "POTENTIA-NODE_PROD.title": "Node Prod",
   "POTENTIA-OFFLOAD_POTENTIAL.description": "Enemy loses {Damage:diff()} HP X times.\nIf you spent exactly {Energy:energyIcons()} on this, gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-OFFLOAD_POTENTIAL.title": "Offload Potential",
   "POTENTIA-POLLUTE.description": "Apply {MercuryPower:diff()} of a random debuff{IfUpgraded:show: twice|} between [gold]Mercury[/gold], [gold]Shock[/gold], or [gold]Strangle[/gold].",
