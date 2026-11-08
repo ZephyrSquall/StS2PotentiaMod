@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Random;
 
 namespace Potentia.PotentiaCode.Relics;
 
-public class TheSecondHand : PotentiaRelic
+public class MummifiedEye : PotentiaRelic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
 
