@@ -21,7 +21,8 @@ public class ShockPower() : PotentiaPower
 
     public override Task AfterEnergySpent(CardModel card, int amount)
     {
-        if (amount > 0 && card.Owner.Creature == Applier)
+        if (amount > 0 && (card.Owner.Creature == Applier ||
+                           Owner.Powers.Any(p => p is ShockingGraspPower && p.Applier == Applier)))
         {
             // Damage can't be dealt during this hook as damage requires a PlayerChoiceContext. So, make a record of the
             // triggering card and the damage it should have dealt. This can then be checked later in the
@@ -40,8 +41,7 @@ public class ShockPower() : PotentiaPower
             // Energy Potion effect
             NCombatRoom.Instance?.PlaySplashVfx(Owner, new Color("f2e35c"));
             await Cmd.Wait(0.2f);
-            await CreatureCmd.Damage(choiceContext, Owner, damage, ValueProp.Unpowered,
-                Applier, null, null);
+            await CreatureCmd.Damage(choiceContext, Owner, damage, ValueProp.Unpowered, Applier, null, null);
         }
     }
 

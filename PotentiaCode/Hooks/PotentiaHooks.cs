@@ -12,9 +12,16 @@ public class PotentiaHooks
             await model.AfterCardTransformedForCombat(card);
     }
 
+    public static async Task AfterRecharged(CardModel card, int recharge, int energy)
+    {
+        if (card.CombatState == null) throw new InvalidOperationException("CombatState is null");
+        foreach (var model in card.CombatState.IterateHookListeners().OfType<IAfterRecharged>())
+            await model.AfterRecharged(card, recharge, energy);
+    }
+
     public static int ModifyRecharge(CardModel card, int? energySpent)
     {
-        int recharge = RechargeTracker.RechargeAmount[card];
+        int recharge = RechargeTracker.RechargeAmount[card] + RechargeTracker.RechargeAmountUntilPlayed[card];
 
         // In my testing, if the player is prompted for a choice in the middle of combat (e.g. choosing a card to
         // discard with Survivor, or a card to upgrade with Armaments), and then quits to the title screen before

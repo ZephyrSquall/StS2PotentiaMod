@@ -1,6 +1,7 @@
 using System.Reflection;
 using BaseLib.Utils;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Hooks;
@@ -8,6 +9,8 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.TextEffects;
+using Potentia.PotentiaCode.CombatHistoryEntries;
+using Potentia.PotentiaCode.Hooks;
 using Potentia.PotentiaCode.Utilities;
 
 namespace Potentia.PotentiaCode.Patches;
@@ -58,8 +61,11 @@ internal class RechargeDescriptionPatch
                 RechargeTracker.IsRechargeIncreasedOnUpgrade[cardModel])
                 formattedRechargeValue = $"[green]{recharge}[/green]";
             else
-                formattedRechargeValue = StsTextUtilities.HighlightChangeText(recharge.ToString(),
-                    recharge - RechargeTracker.RechargeAmount[cardModel]);
+            {
+                int comparison = recharge - (RechargeTracker.RechargeAmount[cardModel] +
+                                             RechargeTracker.RechargeAmountUntilPlayed[cardModel]);
+                formattedRechargeValue = StsTextUtilities.HighlightChangeText(recharge.ToString(), comparison);
+            }
 
             LocString locString;
             if (cardModel.IsInCombat || cardModel.UpgradePreviewType == CardUpgradePreviewType.Combat)
@@ -140,8 +146,22 @@ internal class RegainEnergyPatch
         {
             // Intentional integer division to ensure fractional amounts are rounded down, as is always supposed to be
             // the case in Slay the Spire 2.
-            await PlayerCmd.GainEnergy((amount * recharge) / 3, card.Owner);
+            int energy = (amount * recharge) / 3;
+            await PlayerCmd.GainEnergy(energy, card.Owner);
+            if (card.CombatState == null) throw new InvalidOperationException("CombatState is null");
+            CombatManager.Instance.History.Recharged(card.CombatState, recharge, energy, card.Owner);
+            await PotentiaHooks.AfterRecharged(card, recharge, energy);
         }
+    }
+}
+
+[HarmonyPatch(typeof(CardEnergyCost), nameof(CardEnergyCost.AfterCardPlayedCleanup))]
+internal class ClearTemporaryRechargeAfterCardPlayed
+{
+    [HarmonyPrefix]
+    private static void AfterCardPlayedCleanupPrefix(CardModel ____card)
+    {
+        RechargeTracker.RechargeAmountUntilPlayed[____card] = 0;
     }
 }
 
@@ -154,6 +174,8 @@ public class RechargeClonePatch
         if (__result is CardModel resultCardModel && __instance is CardModel instanceCardModel)
         {
             RechargeTracker.RechargeAmount[resultCardModel] = RechargeTracker.RechargeAmount[instanceCardModel];
+            RechargeTracker.RechargeAmountUntilPlayed[resultCardModel] =
+                RechargeTracker.RechargeAmountUntilPlayed[instanceCardModel];
             RechargeTracker.IsRechargeIncreasedOnUpgrade[resultCardModel] =
                 RechargeTracker.IsRechargeIncreasedOnUpgrade[instanceCardModel];
         }
@@ -163,5 +185,6 @@ public class RechargeClonePatch
 public static class RechargeTracker
 {
     public static readonly SpireField<CardModel, int> RechargeAmount = new(() => 0);
+    public static readonly SpireField<CardModel, int> RechargeAmountUntilPlayed = new(() => 0);
     public static readonly SpireField<CardModel, bool> IsRechargeIncreasedOnUpgrade = new(() => false);
 }

@@ -19,7 +19,7 @@ public class CardTransformedEntry : CombatHistoryEntry
     }
 }
 
-public static class CombatHistoryExtensions
+public static partial class CombatHistoryExtensions
 {
     public static void CardTransformed(this CombatHistory combatHistory, ICombatState combatState, CardModel card) =>
         combatHistory.Add(combatState,
