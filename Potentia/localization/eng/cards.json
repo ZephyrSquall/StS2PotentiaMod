@@ -74,6 +74,8 @@
   "POTENTIA-RUNOFF.title": "Runoff",
   "POTENTIA-SHOCKING_GRASP.description": "Deal {Damage:diff()} damage.\nApply {ShockPower:diff()} [gold]Shock[/gold].\nThis turn, your [gold]Shock[/gold] on the enemy is triggered by ALL allies spending energy.",
   "POTENTIA-SHOCKING_GRASP.title": "Shocking Grasp",
+  "POTENTIA-SHORT_CIRCUIT.description": "Apply {ShockPower:diff()} [gold]Shock[/gold] to ALL enemies.\nYour [gold]Shock[/gold] is not reduced each turn.",
+  "POTENTIA-SHORT_CIRCUIT.title": "Short Circuit",
   "POTENTIA-SPARK.description": "The first time you [gold]Recharge[/gold] each turn, all allies gain that much energy as well.",
   "POTENTIA-SPARK.title": "Spark",
   "POTENTIA-STATIC_DISCHARGE.description": "Every {Energy:energyIcons()} you spend, apply {StaticDischargePower:diff()} [gold]Shock[/gold] to ALL enemies.",

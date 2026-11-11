@@ -36,7 +36,10 @@ public class ShockPower() : PotentiaPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (GetInternalData<Data>().damageAmountsForPlayedCards.Remove(cardPlay.Card, out int damage))
+        // If the Applier is dead, the Damage command wouldn't deal any damage anyway because the source of the damage
+        // cannot deal damage anymore. But the animations would still play, so this must still be skipped in that case.
+        if (GetInternalData<Data>().damageAmountsForPlayedCards.Remove(cardPlay.Card, out int damage) &&
+            Applier != null && Applier.IsAlive)
         {
             // Energy Potion effect
             NCombatRoom.Instance?.PlaySplashVfx(Owner, new Color("f2e35c"));
@@ -48,7 +51,9 @@ public class ShockPower() : PotentiaPower
     public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
-        if (participants.Contains(Owner) && !Owner.IsDead) await PowerCmd.Decrement(this);
+        if (participants.Contains(Owner) && !Owner.IsDead &&
+            (Applier == null || !Applier.HasPower<ShortCircuitPower>()))
+            await PowerCmd.Decrement(this);
     }
 
     private class Data
