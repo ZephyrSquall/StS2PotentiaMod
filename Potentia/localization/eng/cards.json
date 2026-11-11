@@ -84,6 +84,8 @@
   "POTENTIA-TRANSISTOR.description": "Deal {Damage:diff()} damage.\nAdd [gold]Auto[/gold] to a card in your [gold]Hand[/gold]{IfUpgraded:show:| this turn}.",
   "POTENTIA-TRANSISTOR.selectionScreenPrompt": "Select a card to add [gold]Auto[/gold] to.",
   "POTENTIA-TRANSISTOR.title": "Transistor",
+  "POTENTIA-WELD.description": "Deal {Damage:diff()} damage.\n[gold]Transform[/gold] {Cards:diff()} {Cards:plural:card|cards}.",
+  "POTENTIA-WELD.title": "Weld",
   "POTENTIA-X_FORM.description": "Can only be played if this costs {Energy:energyIcons()} or more.\nGain the effects of X{IfUpgraded:show:-1|-2} random \"Form\" Powers from basegame characters.",
   "POTENTIA-X_FORM.title": "X Form"
 }
