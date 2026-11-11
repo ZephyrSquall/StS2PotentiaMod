@@ -25,6 +25,8 @@
   "POTENTIA-ELEMENTAL_CHARGE.title": "Elemental Charge",
   "POTENTIA-ENERGY_VOLLEY.description": "Deal {Damage:diff()} damage to a random enemy X times.",
   "POTENTIA-ENERGY_VOLLEY.title": "Energy Volley",
+  "POTENTIA-EQUILIBRIUM.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each card you have [gold]Transformed[/gold] this combat.",
+  "POTENTIA-EQUILIBRIUM.title": "Equilibrium",
   "POTENTIA-ERUPTION_POTENTIAL.description": "Enemy loses {Damage:diff()} HP X times.\nIf you spent {Energy:energyIcons()} or less on this, target ALL enemies and gain {Block:diff()} [gold]Block[/gold] X times.",
   "POTENTIA-ERUPTION_POTENTIAL.title": "Eruption Potential",
   "POTENTIA-FATAL_AMP.description": "Apply {ShockPower:diff()} [gold]Shock[/gold].",
