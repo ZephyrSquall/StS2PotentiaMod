@@ -25,12 +25,12 @@ public class Runoff() : PotentiaCard(1, CardType.Skill, CardRarity.Common, Targe
         {
             CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1);
             CardModel? card = (await CardSelectCmd.FromHand(choiceContext, Owner, prefs, null, this)).FirstOrDefault();
-            if (card != null) await CardCmd.TransformToRandom(card, Owner.RunState.Rng.CombatCardSelection);
+            if (card != null) await CardCmd.TransformToRandom(card, Owner.RunState.Rng.CombatCardGeneration);
         }
         else
         {
             CardModel? card = Owner.RunState.Rng.CombatCardSelection.NextItem(PileType.Hand.GetPile(Owner).Cards);
-            if (card != null) await CardCmd.TransformToRandom(card, Owner.RunState.Rng.CombatCardSelection);
+            if (card != null) await CardCmd.TransformToRandom(card, Owner.RunState.Rng.CombatCardGeneration);
         }
     }
 }

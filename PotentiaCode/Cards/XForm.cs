@@ -21,7 +21,7 @@ public class XForm() : PotentiaCard(0, CardType.Power, CardRarity.Rare, TargetTy
     [
         HoverTipFactory.FromPower<DemonFormPower>(), HoverTipFactory.FromPower<SerpentFormPower>(),
         HoverTipFactory.FromPower<VoidFormPower>(), HoverTipFactory.FromPower<ReaperFormPower>(),
-        HoverTipFactory.FromPower<EchoFormPower>()
+        HoverTipFactory.FromPower<EchoFormPower>(), HoverTipFactory.FromPower<MythicFormPower>()
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -40,7 +40,8 @@ public class XForm() : PotentiaCard(0, CardType.Power, CardRarity.Rare, TargetTy
                 ModelDb.Card<SerpentForm>().DynamicVars["SerpentFormPower"].BaseValue),
             (ModelDb.Power<VoidFormPower>(), ModelDb.Card<VoidForm>().DynamicVars["VoidFormPower"].BaseValue),
             (ModelDb.Power<ReaperFormPower>(), 1),
-            (ModelDb.Power<EchoFormPower>(), ModelDb.Card<EchoForm>().DynamicVars[nameof(EchoForm)].BaseValue)
+            (ModelDb.Power<EchoFormPower>(), ModelDb.Card<EchoForm>().DynamicVars[nameof(EchoForm)].BaseValue),
+            (ModelDb.Power<MythicFormPower>(), 1),
         ];
 
         for (int i = 0; i < xValue; i++)

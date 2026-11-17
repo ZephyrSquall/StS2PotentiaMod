@@ -22,7 +22,7 @@ internal class TransformAfterPrismaticCardDrawnPatch
 
         if (card.Keywords.Contains(PotentiaKeywords.Prismatic))
         {
-            var cardPileAddResult = await CardCmd.TransformToRandom(card, card.Owner.RunState.Rng.CombatCardSelection);
+            var cardPileAddResult = await CardCmd.TransformToRandom(card, card.Owner.RunState.Rng.CombatCardGeneration);
             if (cardPileAddResult.success)
             {
                 cardPileAddResult.cardAdded.AddKeyword(PotentiaKeywords.Prismatic);

@@ -27,7 +27,7 @@ public class Weld() : PotentiaCard(2, CardType.Attack, CardRarity.Common, Target
         CardSelectorPrefs prefs =
             new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, DynamicVars.Cards.IntValue);
         IEnumerable<CardModel> cards = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, null, this);
-        foreach (CardModel card in cards) await CardCmd.TransformToRandom(card, Owner.RunState.Rng.CombatCardSelection);
+        foreach (CardModel card in cards) await CardCmd.TransformToRandom(card, Owner.RunState.Rng.CombatCardGeneration);
     }
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(5);

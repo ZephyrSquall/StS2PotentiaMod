@@ -38,7 +38,7 @@ public class AutumnsTouch : PotentiaRelic
                         CardTransformation commonCardTransformation =
                             new CardTransformation(card, commonTransformOptions);
                         await CardCmd.Transform(commonCardTransformation.Yield(),
-                            player.RunState.Rng.CombatCardSelection);
+                            player.RunState.Rng.CombatCardGeneration);
                         break;
                     case CardRarity.Uncommon:
                         IEnumerable<CardModel> uncommonTransformOptions = CardFactory
@@ -47,7 +47,7 @@ public class AutumnsTouch : PotentiaRelic
                         CardTransformation uncommonCardTransformation =
                             new CardTransformation(card, uncommonTransformOptions);
                         await CardCmd.Transform(uncommonCardTransformation.Yield(),
-                            player.RunState.Rng.CombatCardSelection);
+                            player.RunState.Rng.CombatCardGeneration);
                         break;
                     case CardRarity.Rare:
                         IEnumerable<CardModel> rareTransformOptions = CardFactory
@@ -56,7 +56,7 @@ public class AutumnsTouch : PotentiaRelic
                         CardTransformation rareCardTransformation = new CardTransformation(card, rareTransformOptions);
                         IEnumerable<CardPileAddResult> rareTransformResult =
                             await CardCmd.Transform(rareCardTransformation.Yield(),
-                                player.RunState.Rng.CombatCardSelection);
+                                player.RunState.Rng.CombatCardGeneration);
                         foreach (CardPileAddResult result in rareTransformResult)
                         {
                             if (result.success) CardCmd.Upgrade(result.cardAdded);
@@ -73,7 +73,7 @@ public class AutumnsTouch : PotentiaRelic
                         CardTransformation otherCardTransformation =
                             new CardTransformation(card, otherTransformOptions);
                         await CardCmd.Transform(otherCardTransformation.Yield(),
-                            player.RunState.Rng.CombatCardSelection);
+                            player.RunState.Rng.CombatCardGeneration);
                         break;
                 }
             }
