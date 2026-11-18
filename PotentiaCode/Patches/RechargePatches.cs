@@ -4,6 +4,7 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
@@ -41,7 +42,9 @@ internal class RechargeDescriptionPatch
             // Load the "previewType" argument onto the stack, which is index 2 in the raw IL (note that since this is
             // an instance method, argument 0 is "this", so the rest of the arguments are shifted down one index).
             .InsertAndAdvance(CodeInstruction.LoadArgument(2))
-            .InsertAndAdvance(CodeInstruction.Call(() => TranspilerAddedCode(default!, default!, default)))
+            // Load the "target" argument onto the stack, which is index 3 in the raw IL.
+            .InsertAndAdvance(CodeInstruction.LoadArgument(3))
+            .InsertAndAdvance(CodeInstruction.Call(() => TranspilerAddedCode(default!, default!, default, default)))
             // Store the top of the stack into the "source" local variable.
             .InsertAndAdvance(CodeInstruction.StoreLocal(5))
             // Load the cardModel onto the stack again to restore its original state before this patch.
@@ -51,9 +54,9 @@ internal class RechargeDescriptionPatch
     }
 
     public static List<string> TranspilerAddedCode(CardModel cardModel, List<string> source,
-        CardModel.DescriptionPreviewType previewType)
+        CardModel.DescriptionPreviewType previewType, Creature? target)
     {
-        int recharge = PotentiaQueries.GetRecharge(cardModel);
+        int recharge = PotentiaQueries.GetRecharge(cardModel, target);
         if (recharge > 0)
         {
             string formattedRechargeValue;
@@ -128,30 +131,36 @@ public class RechargeHoverTipPatch
     }
 }
 
-[HarmonyPatch(typeof(Hook), nameof(Hook.AfterEnergySpent))]
+[HarmonyPatch(typeof(Hook), nameof(Hook.AfterCardPlayed))]
 internal class RegainEnergyPatch
 {
     [HarmonyPostfix]
-    private static void AfterEnergySpentPostfix(ref Task __result, CardModel card, int amount)
+    private static void AfterCardPlayedPostfix(ref Task __result, ICombatState combatState, CardPlay cardPlay)
     {
-        __result = AsyncWrapper(__result, card, amount);
+        __result = AsyncWrapper(__result, combatState, cardPlay);
     }
 
-    private static async Task AsyncWrapper(Task originalTask, CardModel card, int amount)
+    private static async Task AsyncWrapper(Task originalTask, ICombatState combatState, CardPlay cardPlay)
     {
-        await originalTask;
+        int recharge = PotentiaQueries.GetRecharge(cardPlay.Card, cardPlay.Target, cardPlay.Resources.EnergySpent,
+            out List<IAfterModifyingRecharge> modifiers);
 
-        int recharge = PotentiaQueries.GetRecharge(card, amount);
         if (recharge > 0)
         {
             // Intentional integer division to ensure fractional amounts are rounded down, as is always supposed to be
             // the case in Slay the Spire 2.
-            int energy = (amount * recharge) / 3;
-            await PlayerCmd.GainEnergy(energy, card.Owner);
-            if (card.CombatState == null) throw new InvalidOperationException("CombatState is null");
-            CombatManager.Instance.History.Recharged(card.CombatState, recharge, energy, card.Owner);
-            await PotentiaHooks.AfterRecharged(card, recharge, energy);
+            int energy = (cardPlay.Resources.EnergySpent * recharge) / 3;
+            await PlayerCmd.GainEnergy(energy, cardPlay.Card.Owner);
+            CombatManager.Instance.History.Recharged(combatState, recharge, energy, cardPlay.Card.Owner);
+            await PotentiaHooks.AfterRecharged(cardPlay.Card, recharge, energy);
         }
+
+        foreach (IAfterModifyingRecharge modifier in modifiers)
+        {
+            await modifier.AfterModifyingRecharge(cardPlay.Card);
+        }
+
+        await originalTask;
     }
 }
 

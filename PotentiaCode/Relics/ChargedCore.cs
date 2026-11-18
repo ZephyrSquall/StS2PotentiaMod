@@ -30,7 +30,7 @@ public class ChargedCore : PotentiaRelic, IModifyRecharge
             e.HappenedThisTurn(Owner.Creature.CombatState) && e.CardPlay.Player == Owner &&
             e.CardPlay.Resources.EnergySpent > 0 && e.CardPlay.Card.EnergyCost.CostsX);
 
-    public int ModifyRecharge(CardModel card, int energySpent, int recharge)
+    public int ModifyRecharge(CardModel card, int energySpent, int recharge, Creature? target, bool isPreview)
     {
         if (card.Owner == Owner && card.EnergyCost.CostsX && energySpent > 0 && !HasSpentEnergyOnXCardThisTurn)
             return recharge + DynamicVars["Recharge"].IntValue;

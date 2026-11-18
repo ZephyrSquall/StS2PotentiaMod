@@ -9,5 +9,5 @@ namespace Potentia.PotentiaCode.Hooks;
 /// <param name="card">Card whose Recharge was modified.</param>
 public interface IAfterModifyingRecharge
 {
-    void AfterModifyingRecharge(CardModel card);
+    Task AfterModifyingRecharge(CardModel card);
 }

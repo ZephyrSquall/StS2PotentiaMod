@@ -1,3 +1,4 @@
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 
 namespace Potentia.PotentiaCode.Hooks;
@@ -10,8 +11,13 @@ namespace Potentia.PotentiaCode.Hooks;
 /// <param name="card">Card that is getting Recharge.</param>
 /// <param name="energySpent">Energy spent to play this card (or predicted energy spend for preview values).</param>
 /// <param name="recharge">Original amount of Recharge the card would have.</param>
+/// <param name="target">Target of the card that is getting Recharge. null if the card has no targets or is not
+/// currently being played.</param>
+/// <param name="isPreview">Whether this is to generate a preview value or not. You should only use this in exceptional
+/// circumstances to handle cases where otherwise the preview and actual values would differ. Do not use this to make
+/// side effects happen only when it is not a preview.</param>
 /// <returns>New amount of Recharge the card will have.</returns>
 public interface IModifyRecharge
 {
-    int ModifyRecharge(CardModel card, int energySpent, int recharge);
+    int ModifyRecharge(CardModel card, int energySpent, int recharge, Creature? target, bool isPreview);
 }

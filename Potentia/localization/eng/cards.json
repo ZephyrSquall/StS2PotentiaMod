@@ -12,7 +12,7 @@
   "POTENTIA-CONCEALED_CONTRAPTIONS.title": "Concealed Contraptions",
   "POTENTIA-CONSERVATION_OF_ENERGY.description": "Whenever you spend energy on a cost X card, gain {ConservationOfEnergyPower:plural:|{:diff()} times }that much [gold]Block[/gold].",
   "POTENTIA-CONSERVATION_OF_ENERGY.title": "Conservation of Energy",
-  "POTENTIA-CONSERVE.description": "Deal {Damage:diff()} damage.\nThe next cost X card you play has {Recharge:diff()} additional [gold]Recharge[/gold].",
+  "POTENTIA-CONSERVE.description": "Deal {Damage:diff()} damage.\nThe next Attack you play on the enemy has {Recharge:diff()} additional [gold]Recharge[/gold].",
   "POTENTIA-CONSERVE.title": "Conserve",
   "POTENTIA-CORROSIVE_SLASH.description": "Deal {Damage:diff()} damage.\nApply {FrailPower:diff()} [gold]Frail[/gold].{DexterityLoss:cond:>0?\nEnemy loses {DexterityLoss:diff()} [gold]Dexterity[/gold].|}\nDraw {CalculationExtra:diff()} {CalculationExtra:plural:card|cards} for each unique debuff on the enemy.{IsTargeting:\n(Draw {CalculatedCards:diff()} {CalculatedCards:plural:card|cards})|}",
   "POTENTIA-CORROSIVE_SLASH.title": "Corrosive Slash",

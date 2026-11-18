@@ -26,7 +26,7 @@ public class Conserve() : PotentiaCard(2, CardType.Attack, CardRarity.Uncommon, 
             .Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<ConservePower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<ConservePower>(choiceContext, play.Target, 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(6);
