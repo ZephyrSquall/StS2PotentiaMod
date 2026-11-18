@@ -21,10 +21,9 @@ public class PotentiaHooks
     }
 
     public static int ModifyRecharge(CardModel card, Creature? target, int? energySpent,
-        out List<IAfterModifyingRecharge> modifiers)
+        List<IAfterModifyingRecharge>? modifiers)
     {
         int recharge = RechargeTracker.RechargeAmount[card] + RechargeTracker.RechargeAmountUntilPlayed[card];
-        modifiers = [];
 
         // In my testing, if the player is prompted for a choice in the middle of combat (e.g. choosing a card to
         // discard with Survivor, or a card to upgrade with Armaments), and then quits to the title screen before
@@ -39,13 +38,14 @@ public class PotentiaHooks
         // energySpent indicates the amount of energy spent on the card. If it is null, that has a special meaning: This
         // card hasn't actually been played, and we're calling ModifyRecharge to get a preview number for display
         // purposes; in this case, predict what the energy spent will be.
-        bool isPreview = energySpent is null;
         int actualOrPredictedEnergySpent = energySpent ?? card.EnergyCost.GetAmountToSpend();
+
+        modifiers?.Clear();
 
         foreach (var model in card.CombatState.IterateHookListeners().OfType<IModifyRecharge>())
         {
-            int newRecharge = model.ModifyRecharge(card, actualOrPredictedEnergySpent, recharge, target, isPreview);
-            if (energySpent != null && newRecharge != recharge &&
+            int newRecharge = model.ModifyRecharge(card, actualOrPredictedEnergySpent, recharge, target);
+            if (modifiers != null && energySpent != null && newRecharge != recharge &&
                 model is IAfterModifyingRecharge afterModifyingRechargeModel)
                 modifiers.Add(afterModifyingRechargeModel);
             recharge = newRecharge;

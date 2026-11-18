@@ -8,17 +8,12 @@ namespace Potentia.PotentiaCode.Utilities;
 
 public class PotentiaQueries
 {
-    public static int GetRecharge(CardModel card, Creature? target = null, int? energySpent = null)
-    {
-        return GetRecharge(card, target, energySpent, out _);
-    }
-
-    public static int GetRecharge(CardModel card, Creature? target, int? energySpent,
-        out List<IAfterModifyingRecharge> modifiers)
+    public static int GetRecharge(CardModel card, Creature? target = null, int? energySpent = null,
+        List<IAfterModifyingRecharge>? modifiers = null)
     {
         if (card.IsInCombat || card.UpgradePreviewType == CardUpgradePreviewType.Combat)
         {
-            return PotentiaHooks.ModifyRecharge(card, target, energySpent, out modifiers);
+            return PotentiaHooks.ModifyRecharge(card, target, energySpent, modifiers);
         }
 
         modifiers = [];

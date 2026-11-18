@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Reflection;
 using BaseLib.Utils;
 using HarmonyLib;
@@ -131,6 +132,29 @@ public class RechargeHoverTipPatch
     }
 }
 
+// To help keep the actual Recharge amount identical to the preview value, we calculate and store the Recharge amount
+// just before the card is played, then use this stored value just after the card is played. This prevents the Recharge
+// amount from changing from its preview value due to things that happen during the card play, such as the enemy gaining
+// the Conserve debuff.
+[HarmonyPatch(typeof(Hook), nameof(Hook.BeforeCardPlayed))]
+internal class StoreRechargePatch
+{
+    [HarmonyPostfix]
+    private static void BeforeCardPlayedPostfix(ref Task __result, ICombatState combatState, CardPlay cardPlay)
+    {
+        __result = AsyncWrapper(__result, combatState, cardPlay);
+    }
+
+    private static async Task AsyncWrapper(Task originalTask, ICombatState combatState, CardPlay cardPlay)
+    {
+        RechargeTracker.ModifiedRechargeAmountForThisCardPlay[cardPlay.Card] = PotentiaQueries.GetRecharge(
+            cardPlay.Card, cardPlay.Target, cardPlay.Resources.EnergySpent,
+            RechargeTracker.RechargeModifiersForThisCardPlay[cardPlay.Card]);
+
+        await originalTask;
+    }
+}
+
 [HarmonyPatch(typeof(Hook), nameof(Hook.AfterCardPlayed))]
 internal class RegainEnergyPatch
 {
@@ -142,9 +166,7 @@ internal class RegainEnergyPatch
 
     private static async Task AsyncWrapper(Task originalTask, ICombatState combatState, CardPlay cardPlay)
     {
-        int recharge = PotentiaQueries.GetRecharge(cardPlay.Card, cardPlay.Target, cardPlay.Resources.EnergySpent,
-            out List<IAfterModifyingRecharge> modifiers);
-
+        int recharge = RechargeTracker.ModifiedRechargeAmountForThisCardPlay[cardPlay.Card];
         if (recharge > 0)
         {
             // Intentional integer division to ensure fractional amounts are rounded down, as is always supposed to be
@@ -155,10 +177,18 @@ internal class RegainEnergyPatch
             await PotentiaHooks.AfterRecharged(cardPlay.Card, recharge, energy);
         }
 
-        foreach (IAfterModifyingRecharge modifier in modifiers)
-        {
-            await modifier.AfterModifyingRecharge(cardPlay.Card);
-        }
+        // We delay calling AfterModifyingRecharge until after the card play because most models that call this use it
+        // to remove themselves after modifying Recharge. We don't want this to happen until after the card play, so
+        // effects that care about things like the number of debuffs on the enemy don't have that number suddenly
+        // change mid-card play.
+        List<IAfterModifyingRecharge> modifiers = RechargeTracker.RechargeModifiersForThisCardPlay[cardPlay.Card] ??
+                                                  throw new UnreachableException(
+                                                      "RechargeModifiersForThisCardPlay is null");
+        foreach (IAfterModifyingRecharge modifier in modifiers) await modifier.AfterModifyingRecharge(cardPlay.Card);
+
+        RechargeTracker.ModifiedRechargeAmountForThisCardPlay[cardPlay.Card] = 0;
+        (RechargeTracker.RechargeModifiersForThisCardPlay[cardPlay.Card] ??
+         throw new UnreachableException("RechargeModifiersForThisCardPlay is null")).Clear();
 
         await originalTask;
     }
@@ -196,4 +226,9 @@ public static class RechargeTracker
     public static readonly SpireField<CardModel, int> RechargeAmount = new(() => 0);
     public static readonly SpireField<CardModel, int> RechargeAmountUntilPlayed = new(() => 0);
     public static readonly SpireField<CardModel, bool> IsRechargeIncreasedOnUpgrade = new(() => false);
+
+    public static readonly SpireField<CardModel, int> ModifiedRechargeAmountForThisCardPlay = new(() => 0);
+
+    public static readonly SpireField<CardModel, List<IAfterModifyingRecharge>> RechargeModifiersForThisCardPlay =
+        new(() => []);
 }

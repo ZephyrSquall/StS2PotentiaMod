@@ -23,29 +23,10 @@ public class ConservePower() : PotentiaPower, IModifyRecharge, IAfterModifyingRe
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
 
-    protected override object InitInternalData() => new Data();
-
-    public override Task BeforeCardPlayed(CardPlay cardPlay)
+    public int ModifyRecharge(CardModel card, int energySpent, int recharge, Creature? target)
     {
-        if (cardPlay.Card.Type == CardType.Attack && cardPlay.Card.Owner.Creature == Applier &&
-            (cardPlay.Card.TargetType == TargetType.AllEnemies ||
-             (cardPlay.Card.TargetType == TargetType.AnyEnemy && cardPlay.Target == Owner)))
-            GetInternalData<Data>().playedAttacks.Add(cardPlay.Card);
-        return Task.CompletedTask;
-    }
-
-    public int ModifyRecharge(CardModel card, int energySpent, int recharge, Creature? target, bool isPreview)
-    {
-        if (isPreview)
-        {
-            return card.Type == CardType.Attack && card.Owner.Creature == Applier &&
-                   (card.TargetType == TargetType.AllEnemies ||
-                    (card.TargetType == TargetType.AnyEnemy && target == Owner))
-                ? recharge + DynamicVars["Recharge"].IntValue
-                : recharge;
-        }
-
-        return GetInternalData<Data>().playedAttacks.Remove(card)
+        return card.Type == CardType.Attack && card.Owner.Creature == Applier &&
+               (card.TargetType == TargetType.AllEnemies || (card.TargetType == TargetType.AnyEnemy && target == Owner))
             ? recharge + DynamicVars["Recharge"].IntValue
             : recharge;
     }
@@ -53,10 +34,5 @@ public class ConservePower() : PotentiaPower, IModifyRecharge, IAfterModifyingRe
     public async Task AfterModifyingRecharge(CardModel card)
     {
         await PowerCmd.Decrement(this);
-    }
-
-    private class Data
-    {
-        public readonly HashSet<CardModel> playedAttacks = [];
     }
 }
