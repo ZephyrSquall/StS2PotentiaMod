@@ -53,7 +53,7 @@
   "POTENTIA-LED.description": "Add [gold]Prismatic[/gold] to {PrismaticCards:plural:a card|{:diff()} cards} in your [gold]Draw Pile[/gold].\nGain {Energy:energyIcons()}.\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
   "POTENTIA-LED.selectionScreenPrompt": "Select {Amount:plural:a card|[blue]{}[/blue] cards} to add [gold]Prismatic[/gold] to.",
   "POTENTIA-LED.title": "LED",
-  "POTENTIA-LOCK_ON_TARGETING.description": "Deal {Damage:diff()} damage X times, hitting enemies from right to left.\nIf you spent exactly {Energy:energyIcons()} on this, it deals double damage.",
+  "POTENTIA-LOCK_ON_TARGETING.description": "Deal {Damage:diff()} damage to the X rightmost enemies X times.\nIf you spent exactly {Energy:energyIcons()} on this, it deals double damage.",
   "POTENTIA-LOCK_ON_TARGETING.title": "Lock-On Targeting",
   "POTENTIA-MAGNITUDE_STRIKE.description": "Deal {Damage:diff()} damage X times.",
   "POTENTIA-MAGNITUDE_STRIKE.title": "Magnitude Strike",

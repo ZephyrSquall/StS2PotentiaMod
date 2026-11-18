@@ -1,5 +1,6 @@
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -19,19 +20,31 @@ public class LockOnTargeting() : PotentiaCard(0, CardType.Attack, CardRarity.Com
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        if (CombatState == null) throw new InvalidOperationException("CombatState is null");
         int xValue = ResolveEnergyXValue();
-        Creature? target = null;
+        if (CombatState == null) throw new InvalidOperationException("CombatState is null");
+        List<Creature> targets = GetRightmostTargets(CombatState, xValue);
+        // We must use the fully qualified name here to disambiguate from Potentia's Hook card.
+        int hitCount =
+            (int)MegaCrit.Sts2.Core.Hooks.Hook.ModifyAttackHitCount(CombatState,
+                DamageCmd.Attack(0M).FromCard(this, play), xValue);
 
-        for (int i = 0; i < xValue; i++)
+        // We cannot use a DamageCmd like we would usually do for Attacks because a DamageCmd only supports hitting a
+        // single enemey, a random enemy, or all enemies. Using an AttackContext directly gets around this issue because
+        // we can specify the exact list of targets to be damaged.
+        await using (AttackContext attackContext =
+                     await AttackCommand.CreateContextAsync(CombatState, choiceContext, play))
         {
-            target = GetNextTarget(CombatState, target);
-            if (target == null) break;
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this, play)
-                .Targeting(target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
+            for (int i = 0; i < hitCount && Owner.Creature.IsAlive; i++)
+            {
+                // Targets might become unhittable during the attack if an earlier hit kills them. We must handle this
+                // or else the game will crash when trying to hit them again.
+                targets.RemoveAll(t => !t.IsHittable);
+                if (targets.Count == 0) break;
+                await CreatureCmd.TriggerAnim(Owner.Creature, "Attack", Owner.Character.AttackAnimDelay);
+                IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, targets,
+                    DynamicVars.Damage, Owner.Creature, this, play);
+                attackContext.AddHit(damageResults);
+            }
         }
     }
 
@@ -47,25 +60,11 @@ public class LockOnTargeting() : PotentiaCard(0, CardType.Attack, CardRarity.Com
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2);
 
-    // Gets the next target. Enemies are ordered by the global X position of their corresponding Creature node (CombatId
-    // is not sequential with their order on-screen if an enemy summons more enemies mid-combat).
-    //
-    // The next target is the enemy with the largest X position that is smaller than the last target's X position. If
-    // there is no last target (it is null) or there is no enemy with a smaller X position, then it gets the enemy with
-    // the largest X position instead, resetting the loop. Note that CombatState.HittableEnemies needs to be checked
-    // each time, as enemies dying to earlier hits will change the available targets.
-    //
-    // If there are no possible targets (I believe this can only happen when Test Subject is changing phases), returns
-    // null.
-    private Creature? GetNextTarget(ICombatState combatState, Creature? lastTarget)
+    private List<Creature> GetRightmostTargets(ICombatState combatState, int numberOfTargets)
     {
-        float lastXPos = lastTarget?.GetCreatureNode()?.GlobalPosition.X ?? float.MaxValue;
-        IEnumerable<Creature> hittableTargets = combatState.HittableEnemies.Where(t => t.GetCreatureNode() != null);
-        IEnumerable<Creature> validTargets =
-            hittableTargets.Where(t => t.GetCreatureNode()?.GlobalPosition.X < lastXPos);
-        if (!validTargets.Any()) validTargets = hittableTargets;
-
-        Creature? nextTarget = validTargets.MaxBy(t => t.GetCreatureNode()?.GlobalPosition.X);
-        return nextTarget;
+        return combatState.HittableEnemies
+            .OrderByDescending(c => c.GetCreatureNode()?.GlobalPosition.X ?? float.MaxValue)
+            .Take(numberOfTargets)
+            .ToList();
     }
 }
