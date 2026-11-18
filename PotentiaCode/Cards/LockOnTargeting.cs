@@ -26,7 +26,7 @@ public class LockOnTargeting() : PotentiaCard(0, CardType.Attack, CardRarity.Com
         // We must use the fully qualified name here to disambiguate from Potentia's Hook card.
         int hitCount =
             (int)MegaCrit.Sts2.Core.Hooks.Hook.ModifyAttackHitCount(CombatState,
-                DamageCmd.Attack(0M).FromCard(this, play), xValue);
+                DamageCmd.Attack(0).FromCard(this, play), xValue);
 
         // We cannot use a DamageCmd like we would usually do for Attacks because a DamageCmd only supports hitting a
         // single enemey, a random enemy, or all enemies. Using an AttackContext directly gets around this issue because

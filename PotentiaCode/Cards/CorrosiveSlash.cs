@@ -1,11 +1,9 @@
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -15,12 +13,7 @@ public class CorrosiveSlash() : PotentiaCard(1, CardType.Attack, CardRarity.Comm
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move), new PowerVar<FrailPower>(2), new("DexterityLoss", 0),
-        new CalculationBaseVar(0), new CalculationExtraVar(1),
-        new CalculatedVar("CalculatedCards").WithMultiplier((_, target) =>
-            target != null
-                ? target.Powers.Count(p => p.TypeForCurrentAmount == PowerType.Debuff && p is not ITemporaryPower)
-                : 0)
+        new DamageVar(9, ValueProp.Move), new PowerVar<FrailPower>(2), new("DexterityLoss", 0),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips
@@ -45,8 +38,6 @@ public class CorrosiveSlash() : PotentiaCard(1, CardType.Attack, CardRarity.Comm
             Owner.Creature, this);
         await PowerCmd.Apply<DexterityPower>(choiceContext, play.Target, -DynamicVars["DexterityLoss"].BaseValue,
             Owner.Creature, this);
-        await CardPileCmd.Draw(choiceContext, ((CalculatedVar)DynamicVars["CalculatedCards"]).Calculate(play.Target),
-            Owner);
     }
 
     protected override void OnUpgrade()

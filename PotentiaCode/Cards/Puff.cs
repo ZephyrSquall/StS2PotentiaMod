@@ -1,4 +1,3 @@
-using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,10 +13,7 @@ public class Puff() : PotentiaCard(0, CardType.Power, CardRarity.Rare, TargetTyp
 
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new PowerVar<StrengthPower>(2), new PowerVar<DexterityPower>(2)
-    ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new("Power", 2)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -30,16 +26,12 @@ public class Puff() : PotentiaCard(0, CardType.Power, CardRarity.Rare, TargetTyp
         var xValue = ResolveEnergyXValue();
         for (int i = 0; i < xValue; i++)
         {
-            await PowerCmd.Apply<StrengthPower>(choiceContext, play.Target,
-                DynamicVars.Power<StrengthPower>().BaseValue, Owner.Creature, this);
-            await PowerCmd.Apply<DexterityPower>(choiceContext, play.Target,
-                DynamicVars.Power<DexterityPower>().BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<StrengthPower>(choiceContext, play.Target, DynamicVars["Power"].BaseValue,
+                Owner.Creature, this);
+            await PowerCmd.Apply<DexterityPower>(choiceContext, play.Target, DynamicVars["Power"].BaseValue,
+                Owner.Creature, this);
         }
     }
 
-    protected override void OnUpgrade()
-    {
-        DynamicVars.Power<StrengthPower>().UpgradeValueBy(1);
-        DynamicVars.Power<DexterityPower>().UpgradeValueBy(1);
-    }
+    protected override void OnUpgrade() => DynamicVars["Power"].UpgradeValueBy(1);
 }

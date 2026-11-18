@@ -37,7 +37,6 @@ public class Led() : PotentiaCard(0, CardType.Skill, CardRarity.Rare, TargetType
     protected override void OnUpgrade()
     {
         DynamicVars["PrismaticCards"].UpgradeValueBy(1);
-        DynamicVars.Energy.UpgradeValueBy(1);
         DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
