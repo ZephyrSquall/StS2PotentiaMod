@@ -21,6 +21,8 @@
   "POTENTIA-DELVE.description": "Put {Cards:plural:a card|{:diff()} cards} from your [gold]Discard Pile[/gold] into your [gold]Hand[/gold].",
   "POTENTIA-DELVE.selectionScreenPrompt": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to put into your [gold]Hand[/gold].",
   "POTENTIA-DELVE.title": "Delve",
+  "POTENTIA-DIODE.description": "Number cost cards gain {DiodePower:diff()} additional [gold]Block[/gold], apply {DiodePower:diff()} additional debuff, and deal {AdditionalDamage:diff()} additional damage X times.",
+  "POTENTIA-DIODE.title": "Diode",
   "POTENTIA-ELEMENTAL_CHARGE.description": "Another player chooses 1 of 3 random{IfUpgraded:show: [gold]Upgraded[/gold]|} cost X cards from any character to add into their [gold]Hand[/gold]. It has [gold]Recharge[/gold] 3 until played.",
   "POTENTIA-ELEMENTAL_CHARGE.title": "Elemental Charge",
   "POTENTIA-ENERGY_VOLLEY.description": "Deal {Damage:diff()} damage to a random enemy X times.",
