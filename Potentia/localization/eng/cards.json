@@ -47,6 +47,8 @@
   "POTENTIA-HOOK.title": "Hook",
   "POTENTIA-INFINITE_STRIKE.description": "Deal {Damage:diff()} damage.\nIf [gold]Fatal[/gold], this card permanently gains [gold]Replay[/gold] {Replay:diff()}.",
   "POTENTIA-INFINITE_STRIKE.title": "Infinite Strike",
+  "POTENTIA-IONIC_BONDING.description": "Gain [gold]Block[/gold] equal to double the {energyPrefix:energyIcons(1)} spent on other cards this turn.{InCombat:\n(Gains {CalculatedBlock:diff()} [gold]Block[/gold])|}",
+  "POTENTIA-IONIC_BONDING.title": "Ionic Bonding",
   "POTENTIA-ISOLATED_SYSTEM.description": "Whenever you [gold]Transform[/gold] a card, gain {IsolatedSystemPower:diff()} [gold]Block[/gold].",
   "POTENTIA-ISOLATED_SYSTEM.title": "Isolated System",
   "POTENTIA-JOLT.description": "The next time you play a cost X card, draw X cards next turn.",
