@@ -33,6 +33,8 @@
   "POTENTIA-ERUPTION_POTENTIAL.title": "Eruption Potential",
   "POTENTIA-FATAL_AMP.description": "Apply {ShockPower:diff()} [gold]Shock[/gold].",
   "POTENTIA-FATAL_AMP.title": "Fatal Amp",
+  "POTENTIA-FERROMAGNETIC_FLUID.description": "Gain {Block:diff()} [gold]Block[/gold] X times.",
+  "POTENTIA-FERROMAGNETIC_FLUID.title": "Ferromagnetic Fluid",
   "POTENTIA-GALVANIC_TOUGHNESS.description": "[gold]Block[/gold] is not removed at the start of your next X turns.",
   "POTENTIA-GALVANIC_TOUGHNESS.title": "Galvanic Toughness",
   "POTENTIA-HEAT_RADIANCE.description": "Deal {Damage:diff()} damage to ALL enemies.\nThis costs 0 {energyPrefix:energyIcons(1)} if you have [gold]Transformed[/gold] a card this turn.",
