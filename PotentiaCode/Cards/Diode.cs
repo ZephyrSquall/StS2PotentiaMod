@@ -17,7 +17,10 @@ public class Diode() : PotentiaCard(0, CardType.Power, CardRarity.Rare, TargetTy
         new PowerVar<DiodePower>(1), new("AdditionalDamage", 2)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Block)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.Static(StaticHoverTip.Block), HoverTipFactory.FromPower<ShockPower>()
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

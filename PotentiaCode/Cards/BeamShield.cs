@@ -15,8 +15,17 @@ public class BeamShield() : PotentiaCard(1, CardType.Skill, CardRarity.Uncommon,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new("BlockThreshold", 4), new CalculationBaseVar(2), new CalculationExtraVar(1),
+        // Note this multiplier calculation explicitly checks for the Diode power. If we didn't do this, Beam Shield's
+        // preview value would not be correct when it is boosted by Diode. See DiodePower for more details.
         new CalculatedVar("CalculatedShock").WithMultiplier((card, _) =>
-            Math.Floor(card.Owner.Creature.Block / card.DynamicVars["BlockThreshold"].BaseValue)),
+        {
+            decimal multiplier = Math.Floor(card.Owner.Creature.Block / card.DynamicVars["BlockThreshold"].BaseValue);
+            // Normally, CalculatedVars preview their updated value everywhere, but external effects that modify a
+            // value only preview that modified value when the card is in the Hand. Emulate that here.
+            if (card.Pile?.Type is PileType.Hand or PileType.Play)
+                multiplier += card.Owner.Creature.GetPowerAmount<DiodePower>();
+            return multiplier;
+        }),
         new BlockVar(8, ValueProp.Move),
     ];
 

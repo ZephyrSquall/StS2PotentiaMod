@@ -26,7 +26,7 @@
   "POTENTIA-DELVE.description": "Put {Cards:plural:a card|{:diff()} cards} from your [gold]Discard Pile[/gold] into your [gold]Hand[/gold].",
   "POTENTIA-DELVE.selectionScreenPrompt": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to put into your [gold]Hand[/gold].",
   "POTENTIA-DELVE.title": "Delve",
-  "POTENTIA-DIODE.description": "Number cost cards gain {DiodePower:diff()} additional [gold]Block[/gold], apply {DiodePower:diff()} additional debuff, and deal {AdditionalDamage:diff()} additional damage X times.",
+  "POTENTIA-DIODE.description": "Number cost cards gain {DiodePower:diff()} additional [gold]Block[/gold], apply {DiodePower:diff()} additional [gold]Shock[/gold], and deal {AdditionalDamage:diff()} additional damage X times.",
   "POTENTIA-DIODE.title": "Diode",
   "POTENTIA-ELECTRICAL_AVENUES.description": "Draw {Cards:diff()} {Cards:plural:card|cards} X times.\nThey gain [gold]Retain[/gold] this turn.",
   "POTENTIA-ELECTRICAL_AVENUES.title": "Electrical Avenues",
