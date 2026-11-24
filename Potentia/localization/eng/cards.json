@@ -53,6 +53,8 @@
   "POTENTIA-IONIC_BONDING.title": "Ionic Bonding",
   "POTENTIA-ISOLATED_SYSTEM.description": "Whenever you [gold]Transform[/gold] a card, gain {IsolatedSystemPower:diff()} [gold]Block[/gold].",
   "POTENTIA-ISOLATED_SYSTEM.title": "Isolated System",
+  "POTENTIA-JAB.description": "Deal {Damage:diff()} damage {HitCount:diff()} {HitCount:plural:time|times}.",
+  "POTENTIA-JAB.title": "Jab",
   "POTENTIA-JOLT.description": "The next time you play a cost X card, draw X cards next turn.",
   "POTENTIA-JOLT.title": "Jolt",
   "POTENTIA-KINETIC_ABSORPTION.description": "Deal {Damage:diff()} damage.\nGain {VigorPower:diff()} [gold]Vigor[/gold].",
