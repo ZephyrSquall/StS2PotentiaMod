@@ -22,16 +22,17 @@ internal class RechargeDescriptionPatch
 {
     private static MethodBase TargetMethod()
     {
-        var method =
-            typeof(CardModel).GetMethod("GetDescriptionForPile", BindingFlags.NonPublic | BindingFlags.Instance);
-        return method ?? throw new MissingMethodException("Could not find GetDescriptionForPile method");
+        MethodInfo method =
+            typeof(CardModel).GetMethod("GetDescriptionForPile", BindingFlags.NonPublic | BindingFlags.Instance) ??
+            throw new MissingMethodException("Could not find GetDescriptionForPile method");
+        return method;
     }
 
     [HarmonyTranspiler]
     private static IEnumerable<CodeInstruction> GetDescriptionForPileTranspiler(
         IEnumerable<CodeInstruction> instructions)
     {
-        var codeMatcher = new CodeMatcher(instructions);
+        CodeMatcher codeMatcher = new CodeMatcher(instructions);
 
         // Add modifier text immediately before where added "Replay" text would go if the card also had Replay.
         codeMatcher.MatchStartForward(CodeMatch.Calls(() => default(CardModel)!.GetEnchantedReplayCount()))
@@ -54,7 +55,7 @@ internal class RechargeDescriptionPatch
         return codeMatcher.Instructions();
     }
 
-    public static List<string> TranspilerAddedCode(CardModel cardModel, List<string> source,
+    private static List<string> TranspilerAddedCode(CardModel cardModel, List<string> source,
         CardModel.DescriptionPreviewType previewType, Creature? target)
     {
         int recharge = PotentiaQueries.GetRecharge(cardModel, target);
