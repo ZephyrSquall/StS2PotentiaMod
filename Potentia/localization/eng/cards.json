@@ -1,4 +1,6 @@
 {
+  "POTENTIA-ACID_RAIN.description": "At the end of your turn, deal damage equal to{AcidRainPower:plural:| {:diff()} times} the number of cards in your [gold]Hand[/gold] to a random enemy.",
+  "POTENTIA-ACID_RAIN.title": "Acid Rain",
   "POTENTIA-ALTERNATOR.description": "Next turn, gain {Energy:energyIcons()}.",
   "POTENTIA-ALTERNATOR.title": "Alternator",
   "POTENTIA-BEAM_SHIELD.description": "Apply {CalculationBase:diff()} [gold]Shock[/gold], plus an additional {CalculationExtra:diff()} [gold]Shock[/gold] for every {BlockThreshold:diff()} [gold]Block[/gold] you have.{InCombat:\n(Apply {CalculatedShock:diff()} [gold]Shock[/gold])|}\nGain {Block:diff()} [gold]Block[/gold].",

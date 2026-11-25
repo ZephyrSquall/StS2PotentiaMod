@@ -1,4 +1,7 @@
 {
+  "POTENTIA-ACID_RAIN_POWER.description": "At the end of your turn, deal damage equal to [blue]2[/blue] times the number of cards in your [gold]Hand[/gold] to a random enemy.",
+  "POTENTIA-ACID_RAIN_POWER.smartDescription": "At the end of your turn, deal damage equal to{Amount:plural:| [blue]{}[/blue] times} the number of cards in your [gold]Hand[/gold] to a random enemy.",
+  "POTENTIA-ACID_RAIN_POWER.title": "Acid Rain",
   "POTENTIA-CONSERVATION_OF_ENERGY_POWER.description": "Whenever you spend energy on a cost [blue]X[/blue] card, gain that much [gold]Block[/gold] per level of [gold]Conservation of Energy[/gold].",
   "POTENTIA-CONSERVATION_OF_ENERGY_POWER.smartDescription": "Whenever you spend energy on a cost [blue]X[/blue] card, gain {Amount:plural:|[blue]{}[/blue] times }that much [gold]Block[/gold].",
   "POTENTIA-CONSERVATION_OF_ENERGY_POWER.title": "Conservation of Energy",
