@@ -69,7 +69,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Potentia\images\card_portraits\big\"/>
+        <Folder Include="Potentia\ArtRoller\"/>
         <Folder Include="Potentia\images\powers\big\"/>
         <Folder Include="Potentia\images\relics\big\"/>
     </ItemGroup>

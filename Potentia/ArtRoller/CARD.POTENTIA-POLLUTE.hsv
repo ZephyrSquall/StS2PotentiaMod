@@ -1,0 +1,42 @@
+{
+  "card_id": "CARD.POTENTIA-POLLUTE",
+  "portrait_path": "res://images/atlases/card_atlas.sprites/defect/darkness.tres",
+  "tint": "#ffffff",
+  "hue": 1,
+  "saturation": 1,
+  "value": 1,
+  "gamma": 1,
+  "red": 1.2,
+  "red_offset": 1.07,
+  "green": 1.15,
+  "green_offset": 1,
+  "blue": 0.41,
+  "blue_offset": 1,
+  "contrast": 1,
+  "selective_1": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_2": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_3": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "flip_h": false,
+  "flip_v": false
+}
