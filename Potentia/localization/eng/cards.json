@@ -44,6 +44,8 @@
   "POTENTIA-FATAL_AMP.title": "Fatal Amp",
   "POTENTIA-FERROMAGNETIC_FLUID.description": "Gain {Block:diff()} [gold]Block[/gold] X times.",
   "POTENTIA-FERROMAGNETIC_FLUID.title": "Ferromagnetic Fluid",
+  "POTENTIA-FLASH.description": "Gain [gold]Block[/gold] equal to total damage you have dealt with [gold]Shock[/gold] this combat.{InCombat:\n(Gains {CalculatedBlock:diff()} [gold]Block[/gold])|}",
+  "POTENTIA-FLASH.title": "Flash",
   "POTENTIA-GALVANIC_TOUGHNESS.description": "[gold]Block[/gold] is not removed at the start of your next X turns.",
   "POTENTIA-GALVANIC_TOUGHNESS.title": "Galvanic Toughness",
   "POTENTIA-HEAT_RADIANCE.description": "Deal {Damage:diff()} damage to ALL enemies.\nThis costs 0 {energyPrefix:energyIcons(1)} if you have [gold]Transformed[/gold] a card this turn.",

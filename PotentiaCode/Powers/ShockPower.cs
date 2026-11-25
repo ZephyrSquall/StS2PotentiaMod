@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
+using Potentia.PotentiaCode.Utilities;
 
 namespace Potentia.PotentiaCode.Powers;
 
@@ -44,7 +45,18 @@ public class ShockPower() : PotentiaPower
             // Energy Potion effect
             NCombatRoom.Instance?.PlaySplashVfx(Owner, new Color("f2e35c"));
             await Cmd.Wait(0.2f);
-            await CreatureCmd.Damage(choiceContext, Owner, damage, ValueProp.Unpowered, Applier, null, null);
+            IEnumerable<DamageResult> damageResults = await CreatureCmd.Damage(choiceContext, Owner, damage,
+                ValueProp.Unpowered, Applier, null, null);
+
+            if (Applier.Player != null)
+                foreach (DamageResult damageResult in damageResults)
+                    if (damageResult.Receiver.IsEnemy)
+                    {
+                        if (Applier.Player.PlayerCombatState == null)
+                            throw new InvalidOperationException("Applier.Player.PlayerCombatState is null");
+                        PotentiaSpireFields.ShockDamageDealtToEnemies[Applier.Player.PlayerCombatState] +=
+                            damageResult.TotalDamage + damageResult.OverkillDamage;
+                    }
         }
     }
 
