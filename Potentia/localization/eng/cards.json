@@ -100,6 +100,8 @@
   "POTENTIA-SHORT_CIRCUIT.title": "Short Circuit",
   "POTENTIA-SPARK.description": "The first time you [gold]Recharge[/gold] each turn, all allies gain that much energy as well.",
   "POTENTIA-SPARK.title": "Spark",
+  "POTENTIA-SPOT_WEAKNESS.description": "Enemy loses {SpotWeaknessPower:diff()} [gold]Strength[/gold] X times this turn.\nApply 1 [gold]Weak[/gold] X times.",
+  "POTENTIA-SPOT_WEAKNESS.title": "Spot Weakness",
   "POTENTIA-STATIC_DISCHARGE.description": "Every {Energy:energyIcons()} you spend, apply {StaticDischargePower:diff()} [gold]Shock[/gold] to ALL enemies.",
   "POTENTIA-STATIC_DISCHARGE.title": "Static Discharge",
   "POTENTIA-STRIKE.description": "Deal {Damage:diff()} damage.",
