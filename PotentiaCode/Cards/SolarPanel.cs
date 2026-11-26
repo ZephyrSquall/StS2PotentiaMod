@@ -27,19 +27,20 @@ public class SolarPanel() : PotentiaCard(4, CardType.Skill, CardRarity.Uncommon,
 
     protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(4);
 
-    private int TimesRechargedThisTurn =>
+    private int TimesRechargedEnergyThisTurn =>
         CombatManager.Instance.History.Entries.OfType<RechargedEntry>()
-            .Count(e => e.HappenedThisTurn(CombatState) && e.Actor == Owner.Creature);
+            .Count(e => e.HappenedThisTurn(CombatState) && e.Actor == Owner.Creature && e.Energy >= 1);
 
     public override Task AfterCardEnteredCombat(CardModel card)
     {
-        if (card == this && !IsClone) EnergyCost.AddThisTurn(-TimesRechargedThisTurn * DynamicVars.Energy.IntValue);
+        if (card == this && !IsClone)
+            EnergyCost.AddThisTurn(-TimesRechargedEnergyThisTurn * DynamicVars.Energy.IntValue);
         return Task.CompletedTask;
     }
 
     public Task AfterRecharged(CardModel card, int recharge, int energy)
     {
-        if (card.Owner == Owner) EnergyCost.AddThisTurn(-DynamicVars.Energy.IntValue);
+        if (card.Owner == Owner && energy >= 1) EnergyCost.AddThisTurn(-DynamicVars.Energy.IntValue);
         return Task.CompletedTask;
     }
 }

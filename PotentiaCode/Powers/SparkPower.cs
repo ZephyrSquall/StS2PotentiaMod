@@ -17,15 +17,15 @@ public class SparkPower() : PotentiaPower, IAfterRecharged
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
 
-    public override int DisplayAmount => Math.Max(0, Amount - TimesRechargedThisTurn);
+    public override int DisplayAmount => Math.Max(0, Amount - TimesRechargedEnergyThisTurn);
 
-    private int TimesRechargedThisTurn =>
+    private int TimesRechargedEnergyThisTurn =>
         CombatManager.Instance.History.Entries.OfType<RechargedEntry>()
-            .Count(e => e.HappenedThisTurn(CombatState) && e.Actor == Owner);
+            .Count(e => e.HappenedThisTurn(CombatState) && e.Actor == Owner && e.Energy >= 1);
 
     public async Task AfterRecharged(CardModel card, int recharge, int energy)
     {
-        if (card.Owner.Creature == Owner && TimesRechargedThisTurn <= Amount)
+        if (card.Owner.Creature == Owner && energy >= 1 && TimesRechargedEnergyThisTurn <= Amount)
         {
             foreach (Creature teammate in CombatState.GetTeammatesOf(Owner)
                          .Where(c => c.IsAlive && c.IsPlayer && c != Owner))

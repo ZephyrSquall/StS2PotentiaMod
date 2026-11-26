@@ -6,7 +6,9 @@ namespace Potentia.PotentiaCode.CombatHistoryEntries;
 
 public class RechargedEntry : CombatHistoryEntry
 {
-    // Recharge value on the card at the instant energy was regained.
+    // Recharge value on the card at the instant the amount of energy to regain was determined. (This is before the card
+    // play, so something that might change the Recharge during the card play, such as the enemy gaining the Converve
+    // debuff, doesn't change the energy regained later.)
     public int Recharge { get; }
 
     // Amount of energy that was regained.
