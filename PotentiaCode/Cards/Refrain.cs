@@ -22,7 +22,7 @@ public class Refrain() : PotentiaCard(0, CardType.Skill, CardRarity.Uncommon, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var xValue = ResolveEnergyXValue();
+        int xValue = ResolveEnergyXValue();
 
         for (int i = 0; i < xValue; i++) await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
 
