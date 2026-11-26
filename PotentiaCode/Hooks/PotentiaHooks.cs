@@ -1,5 +1,8 @@
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Multiplayer;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using Potentia.PotentiaCode.Patches;
 
@@ -9,8 +12,17 @@ public class PotentiaHooks
 {
     public static async Task AfterCardTransformedForCombat(ICombatState combatState, CardModel card)
     {
+        ulong? netId = LocalContext.NetId;
+        if (!netId.HasValue) return;
+
         foreach (var model in combatState.IterateHookListeners().OfType<IAfterCardTransformedForCombat>())
-            await model.AfterCardTransformedForCombat(card);
+        {
+            HookPlayerChoiceContext choiceContext = new HookPlayerChoiceContext((AbstractModel)model, netId.Value,
+                combatState, GameActionType.Combat);
+            Task task = model.AfterCardTransformedForCombat(choiceContext, card);
+            await choiceContext.AssignTaskAndWaitForPauseOrCompletion(task);
+            ((AbstractModel)model).InvokeExecutionFinished();
+        }
     }
 
     public static async Task AfterRecharged(CardModel card, int recharge, int energy)

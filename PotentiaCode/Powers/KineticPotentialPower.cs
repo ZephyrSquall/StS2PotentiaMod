@@ -18,12 +18,12 @@ public class KineticPotentialPower() : PotentiaPower, IAfterCardTransformedForCo
         HoverTipFactory.Static(StaticHoverTip.Transform), HoverTipFactory.FromPower<VigorPower>()
     ];
 
-    public async Task AfterCardTransformedForCombat(CardModel card)
+    public async Task AfterCardTransformedForCombat(PlayerChoiceContext choiceContext, CardModel card)
     {
         if (card.Owner.Creature == Owner)
         {
             Flash();
-            await PowerCmd.Apply<VigorPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
+            await PowerCmd.Apply<VigorPower>(choiceContext, Owner, Amount, Owner, null);
         }
     }
 }

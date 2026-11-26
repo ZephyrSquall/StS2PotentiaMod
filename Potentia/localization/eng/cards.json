@@ -32,6 +32,8 @@
   "POTENTIA-DIODE.title": "Diode",
   "POTENTIA-ELECTRICAL_AVENUES.description": "Draw {Cards:diff()} {Cards:plural:card|cards} X times.\nThey gain [gold]Retain[/gold] this turn.",
   "POTENTIA-ELECTRICAL_AVENUES.title": "Electrical Avenues",
+  "POTENTIA-ELECTROMAGNETISM.description": "The first time you [gold]Transform[/gold] a card each turn, you may add [gold]Retain[/gold] to a card in your [gold]Hand[/gold].",
+  "POTENTIA-ELECTROMAGNETISM.title": "Electromagnetism",
   "POTENTIA-ELEMENTAL_CHARGE.description": "Another player chooses 1 of 3 random{IfUpgraded:show: [gold]Upgraded[/gold]|} cost X cards from any character to add into their [gold]Hand[/gold]. It has [gold]Recharge[/gold] 3 until played.",
   "POTENTIA-ELEMENTAL_CHARGE.title": "Elemental Charge",
   "POTENTIA-ENERGY_VOLLEY.description": "Deal {Damage:diff()} damage to a random enemy X times.",

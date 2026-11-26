@@ -1,5 +1,6 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -17,7 +18,7 @@ public class IsolatedSystemPower() : PotentiaPower, IAfterCardTransformedForComb
         HoverTipFactory.Static(StaticHoverTip.Transform), HoverTipFactory.Static(StaticHoverTip.Block)
     ];
 
-    public async Task AfterCardTransformedForCombat(CardModel card)
+    public async Task AfterCardTransformedForCombat(PlayerChoiceContext choiceContext, CardModel card)
     {
         if (card.Owner.Creature == Owner)
         {

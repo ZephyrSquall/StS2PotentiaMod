@@ -29,8 +29,7 @@ public sealed class ConservationBrew : PotentiaPotion
         if (target.Player == null) throw new InvalidOperationException("Player is null");
         Player player = target.Player;
         foreach (CardModel card in (await CardSelectCmd.FromHand(choiceContext, player,
-                     new CardSelectorPrefs(SelectionScreenPrompt, DynamicVars.Cards.IntValue),
-                     null, this)).ToList())
+                     new CardSelectorPrefs(SelectionScreenPrompt, 0, DynamicVars.Cards.IntValue), null, this)).ToList())
             await CardCmd.TransformToRandom(card, target.Player.RunState.Rng.CombatCardGeneration);
     }
 }
