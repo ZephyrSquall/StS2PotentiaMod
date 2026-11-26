@@ -32,6 +32,8 @@
   "POTENTIA-DELVE.title": "Delve",
   "POTENTIA-DIODE.description": "Number cost cards gain {DiodePower:diff()} additional [gold]Block[/gold], apply {DiodePower:diff()} additional [gold]Shock[/gold], and deal {AdditionalDamage:diff()} additional damage X times.",
   "POTENTIA-DIODE.title": "Diode",
+  "POTENTIA-DISCORD.description": "[gold]Transform[/gold] {Cards:plural:a card|{:diff()} cards} in your [gold]Draw Pile[/gold].",
+  "POTENTIA-DISCORD.title": "Discord",
   "POTENTIA-ELECTRICAL_AVENUES.description": "Draw {Cards:diff()} {Cards:plural:card|cards} X times.\nThey gain [gold]Retain[/gold] this turn.",
   "POTENTIA-ELECTRICAL_AVENUES.title": "Electrical Avenues",
   "POTENTIA-ELECTROMAGNETISM.description": "The first time you [gold]Transform[/gold] a card each turn, you may add [gold]Retain[/gold] to a card in your [gold]Hand[/gold].",
