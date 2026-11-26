@@ -1,0 +1,42 @@
+{
+  "card_id": "CARD.POTENTIA-RUNOFF",
+  "portrait_path": "res://images/atlases/card_atlas.sprites/defect/leap.tres",
+  "tint": "#ffffff",
+  "hue": 0.89,
+  "saturation": 1,
+  "value": 0.98,
+  "gamma": 0.98,
+  "red": 1,
+  "red_offset": 1,
+  "green": 1,
+  "green_offset": 1,
+  "blue": 1,
+  "blue_offset": 1,
+  "contrast": 1.02,
+  "selective_1": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_2": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_3": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "flip_h": true,
+  "flip_v": false
+}

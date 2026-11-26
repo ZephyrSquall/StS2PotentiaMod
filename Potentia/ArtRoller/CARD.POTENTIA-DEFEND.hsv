@@ -1,0 +1,42 @@
+{
+  "card_id": "CARD.POTENTIA-DEFEND",
+  "portrait_path": "res://images/atlases/card_atlas.sprites/defect/defend_defect.tres",
+  "tint": "#ffffff",
+  "hue": 0.9,
+  "saturation": 1,
+  "value": 1,
+  "gamma": 1.06,
+  "red": 1,
+  "red_offset": 1,
+  "green": 1,
+  "green_offset": 1,
+  "blue": 1,
+  "blue_offset": 1,
+  "contrast": 1.1,
+  "selective_1": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_2": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_3": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "flip_h": false,
+  "flip_v": false
+}

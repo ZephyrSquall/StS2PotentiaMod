@@ -1,0 +1,42 @@
+{
+  "card_id": "CARD.POTENTIA-CEASE_MOTION",
+  "portrait_path": "res://images/atlases/card_atlas.sprites/event/entrench.tres",
+  "tint": "#ffffff",
+  "hue": 0.86,
+  "saturation": 2,
+  "value": 0.5,
+  "gamma": 1,
+  "red": 1.48,
+  "red_offset": 1,
+  "green": 2,
+  "green_offset": 1,
+  "blue": 1.22,
+  "blue_offset": 1.04,
+  "contrast": 1.06,
+  "selective_1": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_2": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_3": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "flip_h": false,
+  "flip_v": false
+}

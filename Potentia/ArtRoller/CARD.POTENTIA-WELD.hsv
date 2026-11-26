@@ -1,0 +1,42 @@
+{
+  "card_id": "CARD.POTENTIA-WELD",
+  "portrait_path": "res://images/atlases/card_atlas.sprites/ironclad/cinder.tres",
+  "tint": "#ffffff",
+  "hue": 0.74,
+  "saturation": 1,
+  "value": 1.2,
+  "gamma": 1.3,
+  "red": 0.47,
+  "red_offset": 1.3,
+  "green": 2,
+  "green_offset": 1,
+  "blue": 1,
+  "blue_offset": 1,
+  "contrast": 1.01,
+  "selective_1": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_2": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "selective_3": {
+    "color": "#ff0000",
+    "width": 0.3,
+    "shift": 1,
+    "saturation": 1,
+    "brightness": 1,
+    "softness": 0.5
+  },
+  "flip_h": true,
+  "flip_v": false
+}
