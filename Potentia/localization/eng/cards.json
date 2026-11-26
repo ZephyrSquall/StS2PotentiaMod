@@ -104,6 +104,8 @@
   "POTENTIA-SHOCKING_GRASP.title": "Shocking Grasp",
   "POTENTIA-SHORT_CIRCUIT.description": "Apply {ShockPower:diff()} [gold]Shock[/gold] to ALL enemies.\nYour [gold]Shock[/gold] is not reduced each turn.",
   "POTENTIA-SHORT_CIRCUIT.title": "Short Circuit",
+  "POTENTIA-SOLAR_PANEL.description": "Gain {Block:diff()} [gold]Block[/gold].\nCosts {Energy:diff()} less {energyPrefix:energyIcons(1)} for each time you have [gold]Recharged[/gold] this turn.",
+  "POTENTIA-SOLAR_PANEL.title": "Solar Panel",
   "POTENTIA-SPARK.description": "The first time you [gold]Recharge[/gold] each turn, all allies gain that much energy as well.",
   "POTENTIA-SPARK.title": "Spark",
   "POTENTIA-SPORADIC_OUTPUT.description": "[gold]Transform[/gold] X cards{IfUpgraded:show: into [gold]Upgraded[/gold] cards|}.",
