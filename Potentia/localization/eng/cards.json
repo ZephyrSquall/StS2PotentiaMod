@@ -23,6 +23,8 @@
   "POTENTIA-CONSERVE.title": "Conserve",
   "POTENTIA-CORROSIVE_SLASH.description": "Deal {Damage:diff()} damage.\nApply {FrailPower:diff()} [gold]Frail[/gold].{DexterityLoss:cond:>0?\nEnemy loses {DexterityLoss:diff()} [gold]Dexterity[/gold].|}",
   "POTENTIA-CORROSIVE_SLASH.title": "Corrosive Slash",
+  "POTENTIA-CRACKLE_CRACKLE.description": "Apply {ShockPower:diff()} [gold]Shock[/gold] for each unique debuff already on the enemy.{IsTargeting:\n(Apply [gold]Shock[/gold] {CalculatedShockApplications:diff()} {CalculatedShockApplications:plural:time|times})|}",
+  "POTENTIA-CRACKLE_CRACKLE.title": "Crackle Crackle",
   "POTENTIA-DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "POTENTIA-DEFEND.title": "Defend",
   "POTENTIA-DELVE.description": "Put {Cards:plural:a card|{:diff()} cards} from your [gold]Discard Pile[/gold] into your [gold]Hand[/gold].",
