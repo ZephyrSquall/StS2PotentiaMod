@@ -108,6 +108,8 @@
   "POTENTIA-SOLAR_PANEL.title": "Solar Panel",
   "POTENTIA-SPARK.description": "The first time you [gold]Recharge[/gold] each turn, all allies gain that much energy as well.",
   "POTENTIA-SPARK.title": "Spark",
+  "POTENTIA-SPLICE.description": "Gain {Block:diff()} [gold]Block[/gold].\nDeal {Damage:diff()} damage.\nNext turn, gain {Energy:energyIcons()}.",
+  "POTENTIA-SPLICE.title": "Splice",
   "POTENTIA-SPORADIC_OUTPUT.description": "[gold]Transform[/gold] X cards{IfUpgraded:show: into [gold]Upgraded[/gold] cards|}.",
   "POTENTIA-SPORADIC_OUTPUT.title": "Sporadic Output",
   "POTENTIA-SPOT_WEAKNESS.description": "Enemy loses {SpotWeaknessPower:diff()} [gold]Strength[/gold] X times this turn.\nApply 1 [gold]Weak[/gold] X times.",
