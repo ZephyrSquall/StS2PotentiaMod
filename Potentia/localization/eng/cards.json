@@ -30,7 +30,7 @@
   "POTENTIA-DELVE.description": "Put {Cards:plural:a card|{:diff()} cards} from your [gold]Discard Pile[/gold] into your [gold]Hand[/gold].",
   "POTENTIA-DELVE.selectionScreenPrompt": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to put into your [gold]Hand[/gold].",
   "POTENTIA-DELVE.title": "Delve",
-  "POTENTIA-DIODE.description": "Number cost cards gain {DiodePower:diff()} additional [gold]Block[/gold], apply {DiodePower:diff()} additional [gold]Shock[/gold], and deal {AdditionalDamage:diff()} additional damage X times.",
+  "POTENTIA-DIODE.description": "{IfUpgraded:show:Double X.\n|}Number cost cards gain X additional [gold]Block[/gold], deal X additional damage, and apply X additional [gold]Shock[/gold].",
   "POTENTIA-DIODE.title": "Diode",
   "POTENTIA-DISCORD.description": "[gold]Transform[/gold] {Cards:plural:a card|{:diff()} cards} in your [gold]Draw Pile[/gold].",
   "POTENTIA-DISCORD.title": "Discord",
