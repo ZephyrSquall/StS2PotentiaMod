@@ -17,7 +17,11 @@ public class SporadicOutput : PotentiaCard
 
     protected override bool HasEnergyCostX => true;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Transform)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromCard<EnergyVolley>(IsUpgraded), HoverTipFactory.FromCard<Quicksilver>(IsUpgraded),
+        HoverTipFactory.FromCard<ChokingCloud>(IsUpgraded)
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -28,11 +32,18 @@ public class SporadicOutput : PotentiaCard
         if (xValue > 0)
         {
             CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, xValue);
-            foreach (CardModel card in await CardSelectCmd.FromHand(choiceContext, Owner, prefs, null, this))
+            foreach (CardModel original in await CardSelectCmd.FromHand(choiceContext, Owner, prefs, null, this))
             {
-                CardPileAddResult result =
-                    await CardCmd.TransformToRandom(card, Owner.RunState.Rng.CombatCardGeneration);
-                if (IsUpgraded && result.success) CardCmd.Upgrade(result.cardAdded);
+                IEnumerable<CardModel> canonicalOptions =
+                [
+                    ModelDb.Card<EnergyVolley>(), ModelDb.Card<Quicksilver>(), ModelDb.Card<ChokingCloud>()
+                ];
+                CardModel canonicalReplacement = Owner.RunState.Rng.CombatCardSelection.NextItem(canonicalOptions) ??
+                                                 throw new InvalidOperationException("canonicalTargetCard is null");
+                if (CombatState == null) throw new InvalidOperationException("CombatState is null");
+                CardModel replacement = CombatState.CreateCard(canonicalReplacement, Owner);
+                if (IsUpgraded) CardCmd.Upgrade(replacement);
+                await CardCmd.Transform(original, replacement);
             }
         }
     }

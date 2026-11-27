@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using Potentia.PotentiaCode.Patches;
 using Potentia.PotentiaCode.Utilities;
@@ -13,6 +14,8 @@ namespace Potentia.PotentiaCode.Cards;
 public class ElementalCharge() : PotentiaCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly)
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new("Recharge", 2)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
 
@@ -33,7 +36,7 @@ public class ElementalCharge() : PotentiaCard(1, CardType.Skill, CardRarity.Unco
         CardModel? card = await CardSelectCmd.FromChooseACardScreen(choiceContext, cards, player, true);
         if (card != null)
         {
-            RechargeTracker.RechargeAmountUntilPlayed[card] += 3;
+            RechargeTracker.RechargeAmountUntilPlayed[card] += DynamicVars["Recharge"].IntValue;
             await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
         }
     }

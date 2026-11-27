@@ -12,7 +12,7 @@ public class NodeProd() : PotentiaCard(1, CardType.Attack, CardRarity.Common, Ta
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [PotentiaKeywords.Auto, CardKeyword.Retain];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5, ValueProp.Move), new CardsVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(2, ValueProp.Move), new CardsVar(1)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -31,7 +31,7 @@ public class NodeProd() : PotentiaCard(1, CardType.Attack, CardRarity.Common, Ta
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
+        DynamicVars.Damage.UpgradeValueBy(1);
         DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
