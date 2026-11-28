@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
+using Potentia.PotentiaCode.Cards;
 using Potentia.PotentiaCode.Hooks;
 using Potentia.PotentiaCode.Utilities;
 
@@ -18,7 +19,10 @@ public class ChargedCore : PotentiaRelic, IModifyRecharge
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Recharge", 1)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        PotentiaHoverTips.Recharge(), HoverTipFactory.FromCard<Dissipate>()
+    ];
 
     public override RelicModel? GetUpgradeReplacement()
     {

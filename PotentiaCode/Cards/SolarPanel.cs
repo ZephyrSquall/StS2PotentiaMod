@@ -18,7 +18,10 @@ public class SolarPanel() : PotentiaCard(4, CardType.Skill, CardRarity.Uncommon,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(12, ValueProp.Move), new EnergyVar(3)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        PotentiaHoverTips.Recharge(), HoverTipFactory.FromCard<Dissipate>()
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using Potentia.PotentiaCode.Cards;
 using Potentia.PotentiaCode.CombatHistoryEntries;
 using Potentia.PotentiaCode.Hooks;
 using Potentia.PotentiaCode.Utilities;
@@ -15,7 +16,10 @@ public class SparkPower() : PotentiaPower, IAfterRecharged
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        PotentiaHoverTips.Recharge(), HoverTipFactory.FromCard<Dissipate>()
+    ];
 
     public override int DisplayAmount => Math.Max(0, Amount - TimesRechargedEnergyThisTurn);
 

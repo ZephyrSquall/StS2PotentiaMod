@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using Potentia.PotentiaCode.Cards;
 using Potentia.PotentiaCode.Hooks;
 using Potentia.PotentiaCode.Utilities;
 
@@ -21,7 +22,10 @@ public class ConservePower() : PotentiaPower, IModifyRecharge, IAfterModifyingRe
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new IntVar("Recharge", Recharge)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        PotentiaHoverTips.Recharge(), HoverTipFactory.FromCard<Dissipate>()
+    ];
 
     public int ModifyRecharge(CardModel card, int energySpent, int recharge, Creature? target)
     {

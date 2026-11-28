@@ -17,7 +17,10 @@ public class ElementalCharge() : PotentiaCard(1, CardType.Skill, CardRarity.Unco
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new("Recharge", 2)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        PotentiaHoverTips.Recharge(), HoverTipFactory.FromCard<Dissipate>()
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

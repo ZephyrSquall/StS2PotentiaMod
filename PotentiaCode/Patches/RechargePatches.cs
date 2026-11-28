@@ -6,14 +6,15 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.TextEffects;
+using Potentia.PotentiaCode.Cards;
 using Potentia.PotentiaCode.CombatHistoryEntries;
 using Potentia.PotentiaCode.Hooks;
 using Potentia.PotentiaCode.Utilities;
+using Hook = MegaCrit.Sts2.Core.Hooks.Hook;
 
 namespace Potentia.PotentiaCode.Patches;
 
@@ -127,6 +128,12 @@ public class RechargeHoverTipPatch
             LocString description = new LocString("static_hover_tips", "POTENTIA-RECHARGE_DYNAMIC.description");
             description.Add("Recharge", recharge);
             list.Add(new HoverTip(title, description));
+            
+            // If the model already has 3 or more card Hover Tips, don't add a fourth as this will cause the Hover Tips
+            // to scroll off the top of the screen. This is particularly relevant for Potentia cards that can add either
+            // an Energy Volley, Quicksilver, or Choking Cloud to combat and thus preview all three cards.
+            if (list.Count(h => h is CardHoverTip) < 3)
+                list.Add(HoverTipFactory.FromCard<Dissipate>());
         }
 
         return list;
@@ -174,6 +181,14 @@ internal class RegainEnergyPatch
             // the case in Slay the Spire 2.
             int energy = (cardPlay.Resources.EnergySpent * recharge) / 3;
             await PlayerCmd.GainEnergy(energy, cardPlay.Card.Owner);
+
+            if (energy >= 1)
+            {
+                Dissipate dissipate = combatState.CreateCard<Dissipate>(cardPlay.Card.Owner);
+                dissipate.SetBaseVulnerable(energy);
+                await CardPileCmd.AddGeneratedCardToCombat(dissipate, PileType.Hand, cardPlay.Card.Owner);
+            }
+
             CombatManager.Instance.History.Recharged(combatState, recharge, energy, cardPlay.Card.Owner);
             await PotentiaHooks.AfterRecharged(cardPlay.Card, recharge, energy);
         }

@@ -16,7 +16,10 @@ public class Conserve() : PotentiaCard(2, CardType.Attack, CardRarity.Uncommon, 
         new DamageVar(14, ValueProp.Move), new IntVar("Recharge", ConservePower.Recharge)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        PotentiaHoverTips.Recharge(), HoverTipFactory.FromCard<Dissipate>()
+    ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

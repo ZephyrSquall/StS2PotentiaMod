@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using Potentia.PotentiaCode.Cards;
 using Potentia.PotentiaCode.Patches;
 using Potentia.PotentiaCode.Utilities;
 
@@ -20,7 +21,10 @@ public sealed class SerumX : PotentiaPotion
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(3), new IntVar("Recharge", 1)];
 
-    public override IEnumerable<IHoverTip> ExtraHoverTips => [PotentiaHoverTips.Recharge()];
+    public override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        PotentiaHoverTips.Recharge(), HoverTipFactory.FromCard<Dissipate>()
+    ];
 
     protected override Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
