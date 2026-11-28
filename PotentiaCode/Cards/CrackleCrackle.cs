@@ -12,6 +12,8 @@ namespace Potentia.PotentiaCode.Cards;
 
 public class CrackleCrackle() : PotentiaCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<ShockPower>(2), new CalculationBaseVar(0), new CalculationExtraVar(1),
@@ -31,5 +33,5 @@ public class CrackleCrackle() : PotentiaCard(1, CardType.Skill, CardRarity.Uncom
                 Owner.Creature, this);
     }
 
-    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
+    protected override void OnUpgrade() => RemoveKeyword(CardKeyword.Exhaust);
 }

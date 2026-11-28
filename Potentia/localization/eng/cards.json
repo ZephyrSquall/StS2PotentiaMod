@@ -64,7 +64,7 @@
   "POTENTIA-HEAT_RADIANCE.title": "Heat Radiance",
   "POTENTIA-HEAVY_STAB.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each other card in your [gold]Hand[/gold].",
   "POTENTIA-HEAVY_STAB.title": "Heavy Stab",
-  "POTENTIA-HOOK.description": "Deal {Damage:diff()} damage.\nDraw {CalculationExtra:diff()} {CalculationExtra:plural:card|cards} for each unique debuff on the enemy.{IsTargeting:\n(Draw {CalculatedCards:diff()} {CalculatedCards:plural:card|cards})|}",
+  "POTENTIA-HOOK.description": "Deal {Damage:diff()} damage.\nDraw {CalculationExtra:diff()} {CalculationExtra:plural:card|cards} for each unique debuff already on the enemy.{IsTargeting:\n(Draw {CalculatedCards:diff()} {CalculatedCards:plural:card|cards})|}",
   "POTENTIA-HOOK.title": "Hook",
   "POTENTIA-INFINITE_STRIKE.description": "Deal {Damage:diff()} damage.\nIf [gold]Fatal[/gold], this card permanently gains [gold]Replay[/gold] {Replay:diff()}.",
   "POTENTIA-INFINITE_STRIKE.title": "Infinite Strike",
